@@ -75,7 +75,7 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
   }
 
   const fieldBase =
-    "h-12 w-full rounded-lg border bg-white px-4 text-base text-foreground transition-colors placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent/35";
+    "h-11 w-full rounded-lg border bg-white px-3.5 text-[0.95rem] text-foreground transition-colors placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent/35";
   const fieldOk = "border-border focus:border-accent";
   const fieldErr = "border-destructive focus:border-destructive";
 
@@ -83,18 +83,18 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
     <div
       id={id}
       className={
-        "rounded-3xl border border-border bg-white p-6 shadow-[0_30px_70px_-30px_rgba(0,0,0,0.5)] sm:p-7" +
+        "rounded-3xl border border-border bg-white p-5 shadow-[0_30px_70px_-30px_rgba(0,0,0,0.5)] sm:p-6" +
         (className ? ` ${className}` : "")
       }
     >
-      <div className="mb-5">
+      <div className="mb-3.5">
         <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-gold-deep">
           Free Estimate
         </span>
-        <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-primary">
+        <h2 className="mt-2.5 font-display text-2xl font-semibold tracking-tight text-primary">
           Request an Estimate
         </h2>
-        <p className="mt-2 text-[0.95rem] leading-relaxed text-muted-foreground">
+        <p className="mt-1.5 text-sm leading-snug text-muted-foreground">
           Tell us a little about your property and what you need. It's free, with no obligation.
         </p>
       </div>
@@ -151,7 +151,7 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
           </button>
         </div>
       ) : (
-        <form onSubmit={onSubmit} noValidate className="relative space-y-3.5">
+        <form onSubmit={onSubmit} noValidate className="relative space-y-3">
           {/* Honeypot: hidden from people, tempting to bots. */}
           <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
             <label htmlFor="est-website">Leave this field empty</label>
@@ -165,50 +165,49 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
               onChange={(e) => setHoneypot(e.target.value)}
             />
           </div>
-          <div>
-            <label htmlFor="est-name" className="mb-1.5 block text-sm font-semibold text-primary">
-              Full Name <span className="text-gold-deep">*</span>
-            </label>
-            <input
-              id="est-name"
-              type="text"
-              autoComplete="name"
-              value={values.name}
-              onChange={(e) => update("name", e.target.value)}
-              placeholder="Your full name"
-              className={`${fieldBase} ${errors.name ? fieldErr : fieldOk}`}
-              aria-invalid={!!errors.name}
-            />
-            {errors.name && (
-              <p className="mt-1.5 text-xs font-medium text-destructive">{errors.name}</p>
-            )}
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div>
+              <label htmlFor="est-name" className="mb-1 block text-sm font-semibold text-primary">
+                Full Name <span className="text-gold-deep">*</span>
+              </label>
+              <input
+                id="est-name"
+                type="text"
+                autoComplete="name"
+                value={values.name}
+                onChange={(e) => update("name", e.target.value)}
+                placeholder="Your full name"
+                className={`${fieldBase} ${errors.name ? fieldErr : fieldOk}`}
+                aria-invalid={!!errors.name}
+              />
+              {errors.name && (
+                <p className="mt-1.5 text-xs font-medium text-destructive">{errors.name}</p>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="est-phone" className="mb-1 block text-sm font-semibold text-primary">
+                Phone Number <span className="text-gold-deep">*</span>
+              </label>
+              <input
+                id="est-phone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                value={values.phone}
+                onChange={(e) => update("phone", e.target.value)}
+                placeholder="(262) 555-1234"
+                className={`${fieldBase} ${errors.phone ? fieldErr : fieldOk}`}
+                aria-invalid={!!errors.phone}
+              />
+              {errors.phone && (
+                <p className="mt-1.5 text-xs font-medium text-destructive">{errors.phone}</p>
+              )}
+            </div>
           </div>
 
           <div>
-            <label htmlFor="est-phone" className="mb-1.5 block text-sm font-semibold text-primary">
-              Phone Number <span className="text-gold-deep">*</span>
-            </label>
-            <input
-              id="est-phone"
-              type="tel"
-              inputMode="tel"
-              autoComplete="tel"
-              value={values.phone}
-              onChange={(e) => update("phone", e.target.value)}
-              placeholder="(262) 555-1234"
-              className={`${fieldBase} ${errors.phone ? fieldErr : fieldOk}`}
-              aria-invalid={!!errors.phone}
-            />
-            {errors.phone && (
-              <p className="mt-1.5 text-xs font-medium text-destructive">{errors.phone}</p>
-            )}
-          </div>
-
-          <div>
-            <label
-              htmlFor="est-service"
-              className="mb-1.5 block text-sm font-semibold text-primary"
-            >
+            <label htmlFor="est-service" className="mb-1 block text-sm font-semibold text-primary">
               Service Needed <span className="text-gold-deep">*</span>
             </label>
             <select
@@ -234,10 +233,7 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
 
           <div className="grid gap-3.5 sm:grid-cols-2">
             <div>
-              <label
-                htmlFor="est-email"
-                className="mb-1.5 block text-sm font-semibold text-primary"
-              >
+              <label htmlFor="est-email" className="mb-1 block text-sm font-semibold text-primary">
                 Email (optional)
               </label>
               <input
@@ -258,7 +254,7 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
             <div>
               <label
                 htmlFor="est-location"
-                className="mb-1.5 block text-sm font-semibold text-primary"
+                className="mb-1 block text-sm font-semibold text-primary"
               >
                 Project Location (optional)
               </label>
@@ -275,26 +271,23 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
           </div>
 
           <div>
-            <label
-              htmlFor="est-details"
-              className="mb-1.5 block text-sm font-semibold text-primary"
-            >
+            <label htmlFor="est-details" className="mb-1 block text-sm font-semibold text-primary">
               Project Details (optional)
             </label>
             <textarea
               id="est-details"
-              rows={3}
+              rows={2}
               value={values.details}
               onChange={(e) => update("details", e.target.value)}
               placeholder="Tell us about your property, what you'd like done, and any timing you have in mind."
-              className="w-full rounded-lg border bg-white px-4 py-3 text-base text-foreground transition-colors placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent/35 focus:border-accent border-border"
+              className="w-full resize-none rounded-lg border bg-white px-3.5 py-2.5 text-[0.95rem] text-foreground transition-colors placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent/35 focus:border-accent border-border"
             />
           </div>
 
           <button
             type="submit"
             disabled={status === "submitting"}
-            className={ctaButton({ variant: "solid", size: "lg" }) + " w-full"}
+            className={ctaButton({ variant: "solid", size: "md" }) + " w-full"}
           >
             {status === "submitting" ? "Sending…" : "Request My Free Estimate"}
           </button>

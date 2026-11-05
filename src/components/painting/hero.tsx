@@ -10,7 +10,7 @@ import { EstimateFormCard } from "./estimate-form";
 // the order: headline/description → CTAs → form.
 export function Hero() {
   return (
-    <section id="top" className="relative isolate flex min-h-[92vh] items-center overflow-hidden">
+    <section id="top" className="relative isolate flex min-h-svh items-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <img
           src={IMAGES.hero}
@@ -23,28 +23,28 @@ export function Hero() {
         <div className="absolute inset-0 bg-linear-to-r from-primary/80 via-primary/40 to-primary/5" />
       </div>
 
-      <div className="mx-auto w-full max-w-7xl px-6 py-28 sm:py-32 lg:py-36">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+      <div className="mx-auto w-full max-w-7xl px-6 pb-12 pt-28 sm:pb-14 sm:pt-32 lg:pb-8 lg:pt-28">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
           {/* Left column ~55% */}
-          <div className="max-w-xl">
-            <p className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
+          <div className="max-w-2xl">
+            <p className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               {COPY.hero.eyebrow}
             </p>
 
-            <h1 className="font-display text-balance text-5xl font-extrabold leading-[1.05] tracking-tight text-white [word-break:break-word] sm:text-6xl lg:text-[3.75rem] xl:text-[4.25rem]">
+            <h1 className="font-display text-balance text-5xl font-extrabold leading-[1.05] tracking-tight text-white [word-break:break-word] sm:text-5xl lg:text-5xl lg:leading-[1.08] xl:text-[3.25rem]">
               {COPY.hero.headline}
             </h1>
 
-            <p className="mt-4 font-display text-xl font-medium tracking-tight text-accent sm:text-2xl">
+            <p className="mt-3 font-display text-xl font-medium tracking-tight text-accent sm:text-2xl">
               {COPY.hero.tagline}
             </p>
 
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/85 sm:text-xl">
+            <p className="mt-4 max-w-lg text-lg leading-relaxed text-white/85 sm:text-xl">
               {COPY.hero.subheadline}
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a href="#estimate" className={ctaButton({ variant: "gold", size: "lg" })}>
                 Get a Free Estimate
                 <ArrowRight className="size-4" />
@@ -54,7 +54,7 @@ export function Hero() {
               </a>
             </div>
 
-            <p className="mt-7 flex items-center gap-2.5 text-sm font-medium text-white/70">
+            <p className="mt-5 flex items-center gap-2.5 text-sm font-medium text-white/70">
               <Phone className="size-4 text-accent" />
               <span>Prefer to call? Tap to call</span>
               <a
