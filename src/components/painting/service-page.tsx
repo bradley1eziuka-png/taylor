@@ -10,6 +10,7 @@ import { BUSINESS_PHONE, BUSINESS_PHONE_TEL, COPY } from "@/lib/site-config";
 import type { ServiceConfig } from "@/lib/services-data";
 import { SectionHeading } from "./section-heading";
 import { ctaButton } from "./buttons";
+import { estimateHref } from "@/lib/estimate-select";
 
 // Generates a complete service page from a single ServiceConfig so all
 // service pages share one cohesive layout, voice, and visual system.
@@ -42,7 +43,10 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
             {service.shortDescription}
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="/#estimate" className={ctaButton({ variant: "gold", size: "lg" })}>
+            <a
+              href={estimateHref(service.estimateId)}
+              className={ctaButton({ variant: "gold", size: "lg" })}
+            >
               Get a Free Estimate
               <ArrowRight className="size-4" />
             </a>
@@ -76,7 +80,10 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
               {service.explanation.body}
             </p>
             <div className="mt-8">
-              <a href="/#estimate" className={ctaButton({ variant: "solid", size: "md" })}>
+              <a
+                href={estimateHref(service.estimateId)}
+                className={ctaButton({ variant: "solid", size: "md" })}
+              >
                 Get an Estimate
                 <ArrowRight className="size-4" />
               </a>
@@ -246,7 +253,10 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
             {COPY.finalCta.body}
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="/#estimate" className={ctaButton({ variant: "gold", size: "lg" })}>
+            <a
+              href={estimateHref(service.estimateId)}
+              className={ctaButton({ variant: "gold", size: "lg" })}
+            >
               Get a Free Estimate
               <ArrowRight className="size-4" />
             </a>

@@ -15,6 +15,9 @@ import { Testimonials } from "@/components/painting/testimonials";
 import { HOME_DESCRIPTION, HOME_TITLE, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
+  // Keep ?service=<id> so estimate buttons on other pages can preselect a service.
+  validateSearch: (search: Record<string, unknown>): { service?: string } =>
+    typeof search["service"] === "string" ? { service: search["service"] } : {},
   head: () => pageHead({ title: HOME_TITLE, description: HOME_DESCRIPTION, path: "/" }),
   component: Index,
 });

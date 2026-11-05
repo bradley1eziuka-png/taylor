@@ -3,7 +3,7 @@ import { ChevronDown, Menu, Phone, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { BUSINESS_NAME, BUSINESS_PHONE, BUSINESS_PHONE_TEL } from "@/lib/site-config";
-import { SERVICE_LIST } from "@/lib/services-data";
+import { ALL_SERVICES, SERVICES } from "@/lib/services-data";
 import { ctaButton } from "./buttons";
 import { Logo } from "./logo";
 
@@ -41,9 +41,13 @@ export function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        solid
-          ? "bg-background/90 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.2)] backdrop-blur-md"
-          : "bg-transparent",
+        // No backdrop blur while the mobile menu is open: backdrop-filter would turn the
+        // header into the containing block for the fixed menu overlay and clip it to 80px.
+        open
+          ? "bg-background"
+          : solid
+            ? "bg-background/90 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.2)] backdrop-blur-md"
+            : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-6">
@@ -74,17 +78,23 @@ export function Header() {
               Services
               <ChevronDown className="size-4 transition-transform duration-200 group-hover:rotate-180" />
             </button>
-            <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+            <div className="invisible absolute left-1/2 top-full z-50 w-80 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
               <div className="rounded-2xl border border-border bg-card p-2 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.3)]">
-                {SERVICE_LIST.map((service) => (
+                {ALL_SERVICES.map((service) => (
                   <a
-                    key={service.slug}
-                    href={service.path}
-                    className="block rounded-lg px-4 py-3 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-gold-deep"
+                    key={service.id}
+                    href={SERVICES[service.pageKey].path}
+                    className="block rounded-lg px-4 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-gold-deep"
                   >
                     {service.title}
                   </a>
                 ))}
+                <a
+                  href="/#services"
+                  className="mt-1 block rounded-lg border-t border-border px-4 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-secondary hover:text-gold-deep"
+                >
+                  View All Services
+                </a>
               </div>
             </div>
           </div>
@@ -181,10 +191,10 @@ export function Header() {
                 </button>
                 {servicesOpen && (
                   <div className="ml-3 mt-1 space-y-1 border-l border-border pl-3">
-                    {SERVICE_LIST.map((service) => (
+                    {ALL_SERVICES.map((service) => (
                       <a
-                        key={service.slug}
-                        href={service.path}
+                        key={service.id}
+                        href={SERVICES[service.pageKey].path}
                         onClick={() => {
                           setServicesOpen(false);
                           setOpen(false);
@@ -194,6 +204,16 @@ export function Header() {
                         {service.title}
                       </a>
                     ))}
+                    <a
+                      href="/#services"
+                      onClick={() => {
+                        setServicesOpen(false);
+                        setOpen(false);
+                      }}
+                      className="block rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold text-primary transition-colors hover:bg-secondary"
+                    >
+                      View All Services
+                    </a>
                   </div>
                 )}
               </div>

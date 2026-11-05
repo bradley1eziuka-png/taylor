@@ -1,24 +1,14 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { CheckCircle2, Info, Phone } from "lucide-react";
 
 import { FORM_IS_DEMO, submitEstimate } from "@/lib/form-submit";
 import { siteConfig } from "@/config";
 import { BUSINESS_PHONE, BUSINESS_PHONE_TEL } from "@/lib/site-config";
 import { ctaButton } from "./buttons";
+import { SELECT_SERVICE_EVENT } from "@/lib/estimate-select";
+import { ALL_SERVICES, ESTIMATE_SERVICE_OPTIONS } from "@/lib/services-data";
 
-// All nine Taylor LawnCare services (the five service pages group several of them).
-const SERVICE_OPTIONS = [
-  "Weekly & Bi-Weekly Lawn Mowing",
-  "Mulch & Stone Installation",
-  "Seasonal Cleanups",
-  "Lawn Aeration",
-  "Garden Bed Maintenance",
-  "Shrub & Plant Trimming",
-  "Brush & Yard Waste Removal",
-  "Flower, Shrub & Small Tree Planting",
-  "Gutter Cleaning",
-  "Other / Not Sure Yet",
-];
+const SERVICE_OPTIONS = ESTIMATE_SERVICE_OPTIONS;
 
 type Values = {
   name: string;
@@ -41,6 +31,22 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
     "idle",
   );
   const [honeypot, setHoneypot] = useState("");
+
+  // Preselect the service when an estimate button is clicked (same page) or
+  // when the page loads from "/?service=<id>#estimate" (other pages).
+  useEffect(() => {
+    function select(id: string | null) {
+      const match = ALL_SERVICES.find((s) => s.id === id);
+      if (!match) return;
+      setStatus((st) => (st === "success" || st === "demo" ? "idle" : st));
+      setValues((v) => ({ ...v, service: match.title }));
+      setErrors(({ service: _drop, ...rest }) => rest);
+    }
+    select(new URLSearchParams(window.location.search).get("service"));
+    const onSelect = (e: Event) => select((e as CustomEvent<{ id: string }>).detail?.id ?? null);
+    window.addEventListener(SELECT_SERVICE_EVENT, onSelect);
+    return () => window.removeEventListener(SELECT_SERVICE_EVENT, onSelect);
+  }, []);
 
   function update<K extends keyof Values>(key: K, value: string) {
     setValues((v) => ({ ...v, [key]: value }));

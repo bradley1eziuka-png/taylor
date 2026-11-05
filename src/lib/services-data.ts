@@ -33,6 +33,8 @@ export interface ServiceConfig {
   faqs: ServiceFaq[];
   heroImage: string;
   heroAlt: string;
+  // ALL_SERVICES id preselected when a visitor clicks an estimate button on this page.
+  estimateId: string;
 }
 
 // The same simple, three-step path applies to every service.
@@ -119,6 +121,7 @@ const BASE_SERVICES = {
     heroImage: IMAGES.mowing,
     heroAlt:
       "A freshly mowed lawn with bright green stripes beside a gravel shoulder and mature trees",
+    estimateId: "mowing",
   },
 
   mulch: {
@@ -183,6 +186,7 @@ const BASE_SERVICES = {
     ],
     heroImage: IMAGES.mulch,
     heroAlt: "A curved landscape bed with dark mulch and stone edging in front of a two-story home",
+    estimateId: "mulch",
   },
 
   cleanups: {
@@ -247,6 +251,7 @@ const BASE_SERVICES = {
     ],
     heroImage: IMAGES.cleanups,
     heroAlt: "A yard covered in fallen leaves with long tree shadows across the lawn",
+    estimateId: "cleanups",
   },
 
   gardenBeds: {
@@ -310,6 +315,7 @@ const BASE_SERVICES = {
     ],
     heroImage: IMAGES.gardenBeds,
     heroAlt: "A mulched garden bed filled with green plants beside a lawn and deck",
+    estimateId: "bed-maintenance",
   },
 
   aeration: {
@@ -372,6 +378,7 @@ const BASE_SERVICES = {
     ],
     heroImage: IMAGES.aeration,
     heroAlt: "A lush, freshly mowed lawn with bright green stripes under a cloudy sky",
+    estimateId: "aeration",
   },
 } satisfies Record<string, ServiceConfig>;
 
@@ -397,3 +404,107 @@ export function isServiceEnabled(key: ServiceKey) {
 // Ordered list for the header dropdown, footer links, and the home services grid.
 // Only services enabled in site.config.json appear.
 export const SERVICE_LIST: ServiceConfig[] = siteConfig.services.enabled.map((k) => SERVICES[k]);
+
+// ───────────────────────────────────────────────────────────────────────────
+// The nine services shown as cards on the homepage, listed in the navigation,
+// and offered in the estimate form dropdown. `title` is the exact value used
+// in the form, so keep one source of truth here. Services without their own
+// page link to the page that covers them (`pageKey`). Swap a card photo by
+// changing its key in site.config.json → branding.images.
+// ───────────────────────────────────────────────────────────────────────────
+export type OfferedService = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+  pageKey: ServiceKey;
+};
+
+export const ALL_SERVICES: OfferedService[] = [
+  {
+    id: "mowing",
+    title: "Weekly & Bi-Weekly Lawn Mowing",
+    description:
+      "Reliable weekly or bi-weekly mowing that keeps your lawn clean, even, and looking its best all season.",
+    image: IMAGES.serviceMowing,
+    alt: "A large, freshly mowed lawn with bright green mowing stripes, spruce trees, and homes in the distance",
+    pageKey: "mowing",
+  },
+  {
+    id: "mulch",
+    title: "Mulch & Stone Installation",
+    description:
+      "Fresh mulch and stone that define your landscape beds, finish your yard, and boost curb appeal.",
+    image: IMAGES.serviceMulch,
+    alt: "A landscaped garden bed with fresh dark mulch and green shrubs beside a deck and home",
+    pageKey: "mulch",
+  },
+  {
+    id: "cleanups",
+    title: "Seasonal Cleanups",
+    description:
+      "Spring and fall cleanups that clear leaves and debris and reset your property for the season.",
+    image: IMAGES.cleanups,
+    alt: "A yard covered in fallen leaves with long tree shadows across the lawn",
+    pageKey: "cleanups",
+  },
+  {
+    id: "aeration",
+    title: "Lawn Aeration",
+    description:
+      "Aeration to relieve compacted soil and help your lawn stay healthy as part of a complete routine.",
+    image: IMAGES.aeration,
+    alt: "A lush, freshly mowed lawn with bright green stripes under a cloudy sky",
+    pageKey: "aeration",
+  },
+  {
+    id: "bed-maintenance",
+    title: "Garden Bed Maintenance",
+    description:
+      "Keep your garden beds clean, defined, and free of the clutter that builds up over time.",
+    image: IMAGES.serviceBedMaintenance,
+    alt: "A mulched garden bed filled with green plants and a stepping stone beside a deck",
+    pageKey: "gardenBeds",
+  },
+  {
+    id: "trimming",
+    title: "Shrub & Plant Trimming",
+    description:
+      "Regular trimming keeps shrubs and plants shaped, tidy, and in proportion with your property.",
+    image: IMAGES.serviceTrimming,
+    alt: "A landscaped property with evergreens and shrubs beside a striped lawn",
+    pageKey: "gardenBeds",
+  },
+  {
+    id: "brush-removal",
+    title: "Brush & Yard Waste Removal",
+    description: "We haul away brush and yard waste so you're not left with a pile to deal with.",
+    image: IMAGES.serviceBrush,
+    alt: "An open backyard lawn with large trees and long shadows in early spring",
+    pageKey: "cleanups",
+  },
+  {
+    id: "planting",
+    title: "Flower, Shrub & Small Tree Planting",
+    description:
+      "Add color and structure to your property with new flowers, shrubs, and small trees.",
+    image: IMAGES.servicePlanting,
+    alt: "A mulched landscape bed with young plants and daffodils along the side of a home",
+    pageKey: "gardenBeds",
+  },
+  {
+    id: "gutter-cleaning",
+    title: "Gutter Cleaning",
+    description: "Clear out your gutters as part of a complete seasonal reset for your home.",
+    image: IMAGES.serviceGutter,
+    alt: "A large lawn in front of a home with a tree, mowed in a crisscross stripe pattern",
+    pageKey: "cleanups",
+  },
+];
+
+export const ESTIMATE_OTHER_OPTION = "Other / Not Sure Yet";
+export const ESTIMATE_SERVICE_OPTIONS = [
+  ...ALL_SERVICES.map((s) => s.title),
+  ESTIMATE_OTHER_OPTION,
+];
