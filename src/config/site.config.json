@@ -1,0 +1,71 @@
+{
+  "business": {
+    "name": "Taylor LawnCare",
+    "shortName": "Taylor LawnCare",
+    "phone": "(262) 399-8622",
+    "email": "noahlsu13@gmail.com",
+    "address": { "street": "", "city": "Eagle", "state": "WI", "zip": "" },
+    "serviceAreas": [
+      "Eagle",
+      "Mukwonago",
+      "Palmyra",
+      "Oconomowoc",
+      "Delafield",
+      "Hartland",
+      "Brookfield",
+      "Wales",
+      "North Prairie",
+      "Genesee",
+      "Dousman",
+      "Big Bend",
+      "East Troy",
+      "Elkhorn"
+    ],
+    "hours": [{ "days": "Monday–Friday", "hours": "7:00 AM – 7:00 PM" }],
+    "social": {
+      "facebook": "",
+      "instagram": "",
+      "google": "https://share.google/3x0TpIFZ8b7vyc4oB",
+      "yelp": "",
+      "nextdoor": "",
+      "youtube": ""
+    }
+  },
+  "branding": {
+    "logo": {
+      "src": "/images/taylor-lawncare-logo.webp",
+      "alt": "Taylor LawnCare logo"
+    },
+    "favicon": "/favicon.svg",
+    "colors": {},
+    "images": {}
+  },
+  "services": {
+    "enabled": ["mowing", "mulch", "cleanups", "gardenBeds", "aeration"],
+    "overrides": {}
+  },
+  "content": {
+    "hero": {
+      "eyebrow": "Taylor LawnCare | Serving Waukesha County",
+      "headline": "Professional Lawn Care & Mulch Installation in Eagle, WI",
+      "tagline": "Free estimates. Insured. Locally owned.",
+      "subheadline": "From routine lawn mowing to mulch installation and seasonal cleanups, Taylor LawnCare helps homeowners throughout Waukesha County keep their properties looking their best."
+    },
+    "about": {},
+    "finalCta": {},
+    "testimonials": []
+  },
+  "seo": {
+    "siteUrl": "",
+    "title": "Taylor LawnCare | Lawn Care & Lawn Mowing in Eagle, WI",
+    "description": "",
+    "ogImage": "",
+    "locale": "en_US"
+  },
+  "form": {
+    "provider": "demo",
+    "formspreeId": "",
+    "webhookUrl": "",
+    "showDemoNotice": true
+  }
+}
