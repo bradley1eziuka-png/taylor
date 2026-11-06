@@ -67,6 +67,7 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
+    if (status === "submitting") return; // ignore repeat submits while one is in flight
     if (!validate()) return;
     setStatus("submitting");
     const result = await submitEstimate(values, honeypot);
@@ -136,8 +137,7 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
             Thank You, We'll Be in Touch
           </h3>
           <p className="mt-3 max-w-sm text-[0.95rem] leading-relaxed text-muted-foreground">
-            Your estimate request has been received. We'll reach out shortly to learn more about
-            your project.
+            Thanks! Your estimate request has been sent. We'll be in touch soon.
           </p>
           <p className="mt-6 text-sm text-muted-foreground">
             Need to reach us sooner?{" "}

@@ -62,7 +62,13 @@ export async function submitEstimate(
       res = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...common, _subject: `New estimate request: ${BUSINESS_NAME}` }),
+        body: JSON.stringify({
+          ...common,
+          // Formspree uses "email" as the Reply-To; omit it when blank so an
+          // empty value can't fail Formspree's email validation.
+          ...(common.email ? { _replyto: common.email } : { email: undefined }),
+          _subject: `New estimate request: ${BUSINESS_NAME}`,
+        }),
       });
     } else {
       res = await fetch(webhookUrl, {

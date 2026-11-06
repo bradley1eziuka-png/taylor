@@ -63,9 +63,9 @@
     "locale": "en_US"
   },
   "form": {
-    "provider": "demo",
-    "formspreeId": "",
+    "provider": "formspree",
+    "formspreeId": "xeaawqqn",
     "webhookUrl": "",
-    "showDemoNotice": true
+    "showDemoNotice": false
   }
 }
