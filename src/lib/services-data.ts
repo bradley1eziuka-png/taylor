@@ -260,10 +260,10 @@ const BASE_SERVICES = {
     title: "Garden Beds, Shrubs & Planting",
     eyebrow: "Landscape Bed Maintenance in Eagle, WI",
     shortDescription:
-      "Garden bed maintenance, shrub and plant trimming, and planting of flowers, shrubs, and small trees.",
+      "Garden bed maintenance, shrub and bush trimming, and planting of flowers, shrubs, and small trees.",
     explanation: {
       title: "Landscaping That Stays Looking Good",
-      body: "Well-kept garden beds are what make a property feel finished. Taylor LawnCare handles garden bed maintenance, shrub and plant trimming, and the planting of flowers, shrubs, and small trees, so your landscaping stays neat and healthy-looking from season to season.",
+      body: "Well-kept garden beds are what make a property feel finished. Taylor LawnCare handles garden bed maintenance, shrub and bush trimming, and the planting of flowers, shrubs, and small trees, so your landscaping stays neat and healthy-looking from season to season.",
     },
     benefits: [
       {
@@ -272,8 +272,8 @@ const BASE_SERVICES = {
           "Keep your beds clean, defined, and free of the clutter that builds up over time.",
       },
       {
-        title: "Shrub & Plant Trimming",
-        description: "Regular trimming keeps shrubs and plants shaped, tidy, and in proportion.",
+        title: "Shrub & Bush Trimming",
+        description: "Regular trimming keeps shrubs and bushes shaped, tidy, and in proportion.",
       },
       {
         title: "Flower, Shrub & Small Tree Planting",
@@ -306,7 +306,7 @@ const BASE_SERVICES = {
     faqs: [
       {
         q: "Do you trim shrubs and plants?",
-        a: "Yes. Shrub and plant trimming is one of our services, and it pairs well with garden bed maintenance and seasonal cleanups.",
+        a: "Yes. Shrub and bush trimming is one of our services, and it pairs well with garden bed maintenance and seasonal cleanups.",
       },
       {
         q: "Can you plant new flowers, shrubs, or small trees?",
@@ -469,11 +469,11 @@ export const ALL_SERVICES: OfferedService[] = [
   },
   {
     id: "trimming",
-    title: "Shrub & Plant Trimming",
+    title: "Shrub & Bush Trimming",
     description:
-      "Regular trimming keeps shrubs and plants shaped, tidy, and in proportion with your property.",
+      "Regular trimming keeps shrubs and bushes shaped, tidy, and in proportion with your property.",
     image: IMAGES.serviceTrimming,
-    alt: "A landscaped property with evergreens and shrubs beside a striped lawn",
+    alt: "Hands in work gloves trimming a green hedge with a red hedge trimmer",
     pageKey: "gardenBeds",
   },
   {
@@ -481,7 +481,7 @@ export const ALL_SERVICES: OfferedService[] = [
     title: "Brush & Yard Waste Removal",
     description: "We haul away brush and yard waste so you're not left with a pile to deal with.",
     image: IMAGES.serviceBrush,
-    alt: "An open backyard lawn with large trees and long shadows in early spring",
+    alt: "A large pile of leaves and yard debris on a lawn beside a trailer and pickup truck",
     pageKey: "cleanups",
   },
   {
@@ -498,7 +498,7 @@ export const ALL_SERVICES: OfferedService[] = [
     title: "Gutter Cleaning",
     description: "Clear out your gutters as part of a complete seasonal reset for your home.",
     image: IMAGES.serviceGutter,
-    alt: "A large lawn in front of a home with a tree, mowed in a crisscross stripe pattern",
+    alt: "A gloved hand clearing dead leaves from a rain gutter beside a ladder",
     pageKey: "cleanups",
   },
 ];

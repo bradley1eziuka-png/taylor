@@ -29,7 +29,7 @@ export const DEFAULT_CONTENT = {
     },
     {
       q: "What other services do you offer besides mowing?",
-      a: "We also handle mulch and stone installation, seasonal cleanups, lawn aeration, garden bed maintenance, shrub and plant trimming, brush and yard waste removal, flower, shrub and small tree planting, and gutter cleaning.",
+      a: "We also handle mulch and stone installation, seasonal cleanups, lawn aeration, garden bed maintenance, shrub and bush trimming, brush and yard waste removal, flower, shrub and small tree planting, and gutter cleaning.",
     },
     {
       q: "Which areas do you serve?",
@@ -63,10 +63,10 @@ export const DEFAULT_IMAGES = {
   serviceMowing: "/images/lawn-mowing-featured.webp",
   serviceMulch: "/images/mulch-installation-featured.webp",
   serviceBedMaintenance: "/images/garden-bed-mulch-plants.webp",
-  serviceTrimming: "/images/hero-striped-lawn-mower.webp",
-  serviceBrush: "/images/open-lawn-spring.webp",
+  serviceTrimming: "/images/shrub-bush-trimming-featured.webp",
+  serviceBrush: "/images/brush-yard-waste-removal-featured.webp",
   servicePlanting: "/images/garden-bed-deck-corner.webp",
-  serviceGutter: "/images/lawn-mowing-crosshatch-stripes.webp",
+  serviceGutter: "/images/gutter-cleaning-featured.webp",
   galleryMowingA: "/images/lawn-mowing-stripes-field.webp",
   galleryMowingB: "/images/lawn-mowing-crosshatch-stripes.webp",
   galleryMowingC: "/images/lawn-mowing-hillside-stripes.webp",
