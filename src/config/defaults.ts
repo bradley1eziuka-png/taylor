@@ -62,7 +62,7 @@ export const DEFAULT_IMAGES = {
   about: "/images/equipment-mower-on-trailer.webp",
   serviceMowing: "/images/lawn-mowing-featured.webp",
   serviceMulch: "/images/mulch-installation-featured.webp",
-  serviceBedMaintenance: "/images/garden-bed-mulch-plants.webp",
+  serviceBedMaintenance: "/images/garden-bed-cleanup-featured.webp",
   serviceTrimming: "/images/shrub-bush-trimming-featured.webp",
   serviceBrush: "/images/brush-yard-waste-removal-featured.webp",
   servicePlanting: "/images/garden-bed-deck-corner.webp",

@@ -464,7 +464,7 @@ export const ALL_SERVICES: OfferedService[] = [
     description:
       "Keep your garden beds clean, defined, and free of the clutter that builds up over time.",
     image: IMAGES.serviceBedMaintenance,
-    alt: "A mulched garden bed filled with green plants and a stepping stone beside a deck",
+    alt: "A worker in gloves raking dead leaves from a mulched garden bed beside trimmed shrubs and a debris bag",
     pageKey: "gardenBeds",
   },
   {
