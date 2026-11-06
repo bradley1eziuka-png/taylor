@@ -51,7 +51,7 @@ export function Services() {
                     href={SERVICES[service.pageKey].path}
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold-deep transition-all hover:gap-2.5"
                   >
-                    Learn More
+                    Learn More<span className="sr-only"> about {service.title}</span>
                     <ArrowRight className="size-4" />
                   </a>
                 </div>

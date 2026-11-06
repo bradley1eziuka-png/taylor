@@ -2,12 +2,14 @@ import { Quote } from "lucide-react";
 
 import { COPY } from "@/lib/site-config";
 import { SectionHeading } from "./section-heading";
+import { GoogleReviewsStrip } from "./google-reviews";
 
-// Renders only when real reviews are added to site.config.json →
-// content.testimonials. With none, the section is omitted entirely.
+// Written testimonials render only when real reviews are added to
+// site.config.json → content.testimonials. The Google rating band below
+// links to the business's Google Business Profile instead of copying reviews.
 export function Testimonials() {
   const items = COPY.testimonials;
-  if (items.length === 0) return null;
+  if (items.length === 0) return <GoogleReviewsStrip />;
   return (
     <section id="reviews" className="section-pad scroll-mt-24 bg-background">
       <div className="mx-auto max-w-6xl px-6">

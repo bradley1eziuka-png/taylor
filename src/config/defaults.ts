@@ -1,5 +1,5 @@
 // ───────────────────────────────────────────────────────────────────────────
-// Default copy for the Taylor LawnCare site. Any field can be overridden in
+// Default copy for the Taylor Lawn Care site. Any field can be overridden in
 // site.config.json → content. Do not add unverified facts, years in
 // business, ratings, or reviews here.
 // ───────────────────────────────────────────────────────────────────────────
@@ -14,7 +14,7 @@ export const DEFAULT_CONTENT = {
   about: {
     eyebrow: "Our Story",
     title: "Built From a Passion for Lawn Care. Driven by Pride in Every Property.",
-    body: "Taylor LawnCare started with a simple dream during Noah Taylor's senior year of high school. What began as mowing a neighbor's lawn grew into a local property maintenance business built around hard work, dependable service, and lasting customer relationships.\n\nToday, Taylor LawnCare helps homeowners maintain beautiful outdoor spaces without the hassle. From regular mowing to seasonal property maintenance, Noah's goal is simple: deliver work customers can trust and results that put a smile on their faces.",
+    body: "Taylor Lawn Care started with a simple dream during Noah Taylor's senior year of high school. What began as mowing a neighbor's lawn grew into a local property maintenance business built around hard work, dependable service, and lasting customer relationships.\n\nToday, Taylor Lawn Care helps homeowners maintain beautiful outdoor spaces without the hassle. From regular mowing to seasonal property maintenance, Noah's goal is simple: deliver work customers can trust and results that put a smile on their faces.",
     badgeTitle: "Locally Owned",
     badgeText: "Eagle, Wisconsin",
   },
@@ -36,19 +36,19 @@ export const DEFAULT_CONTENT = {
       a: "We're based in Eagle and serve homeowners throughout Waukesha County and surrounding communities, including Mukwonago, Oconomowoc, Delafield, Hartland, Brookfield, East Troy, and Elkhorn. Not sure if you're in our area? Give us a call.",
     },
     {
-      q: "Is Taylor LawnCare insured?",
-      a: "Yes, Taylor LawnCare is insured.",
+      q: "Is Taylor Lawn Care insured?",
+      a: "Yes, Taylor Lawn Care is insured.",
     },
   ],
   footerBlurb:
-    "Taylor LawnCare LLC is a locally owned lawn care and property maintenance company based in Eagle, Wisconsin, serving Waukesha County and surrounding communities.",
+    "Taylor Lawn Care LLC is a locally owned lawn care and property maintenance company based in Eagle, Wisconsin, serving Waukesha County and surrounding communities.",
   finalCta: {
     title: "Ready for a Lawn You're Proud Of?",
     body: "Request a free, no-obligation estimate and let's talk about what your property needs.",
   },
   seo: {
     description:
-      "Taylor LawnCare provides lawn mowing, mulch installation, seasonal cleanups, and property maintenance in Eagle, WI and throughout Waukesha County. Request a free estimate.",
+      "Taylor Lawn Care provides lawn mowing, mulch installation, seasonal cleanups, and property maintenance in Eagle, WI and throughout Waukesha County. Request a free estimate.",
   },
 } as const;
 

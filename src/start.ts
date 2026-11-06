@@ -17,6 +17,22 @@ const errorMiddleware = createMiddleware().server(async ({ next }) => {
   }
 });
 
+// Vercel also serves every deployment on its own *.vercel.app address. Those copies must
+// never be indexed, so answer them with a noindex header (canonical tags already point at
+// the production domain). Only hosts ending in ".vercel.app" match: the custom domain
+// taylorlawncarewi.com is never affected.
+const previewNoindexMiddleware = createMiddleware().server(async ({ next, request }) => {
+  const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? "")
+    .split(",")[0]!
+    .trim()
+    .split(":")[0]!
+    .toLowerCase();
+  const result = await next();
+  if (host.endsWith(".vercel.app"))
+    result.response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return result;
+});
+
 // Start installs this automatically when src/start.ts is absent; defining the
 // file opts out, so re-add it explicitly to keep server functions protected
 // from cross-site requests.
@@ -25,5 +41,5 @@ const csrfMiddleware = createCsrfMiddleware({
 });
 
 export const startInstance = createStart(() => ({
-  requestMiddleware: [errorMiddleware, csrfMiddleware],
+  requestMiddleware: [errorMiddleware, previewNoindexMiddleware, csrfMiddleware],
 }));

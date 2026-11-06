@@ -3,8 +3,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/painting/site-layout";
 import { ServicePage } from "@/components/painting/service-page";
 import { isServiceEnabled, SERVICES } from "@/lib/services-data";
-import { BUSINESS_NAME, LOCATION_LABEL } from "@/lib/site-config";
-import { pageHead } from "@/lib/seo";
+import { servicePageHead } from "@/lib/seo";
 
 const service = SERVICES.gardenBeds;
 
@@ -13,17 +12,11 @@ export const Route = createFileRoute("/services/garden-beds-shrubs-planting")({
   beforeLoad: () => {
     if (!isServiceEnabled("gardenBeds")) throw notFound();
   },
-  head: () =>
-    pageHead({
-      title: `${service.title}${LOCATION_LABEL ? ` in ${LOCATION_LABEL}` : ""} | ${BUSINESS_NAME}`,
-      description: service.shortDescription,
-      path: service.path,
-      image: service.heroImage,
-    }),
-  component: GardenBedsShrubsPlantingPage,
+  head: () => servicePageHead(service),
+  component: GardenBedsPage,
 });
 
-function GardenBedsShrubsPlantingPage() {
+function GardenBedsPage() {
   return (
     <SiteLayout>
       <ServicePage service={service} />

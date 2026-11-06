@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Phone } from "lucide-react";
+import { ArrowRight, Check, ChevronRight, Phone } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -7,14 +7,17 @@ import {
 } from "@/components/ui/accordion";
 
 import { BUSINESS_PHONE, BUSINESS_PHONE_TEL, COPY } from "@/lib/site-config";
-import type { ServiceConfig } from "@/lib/services-data";
+import { SERVICES, type ServiceConfig } from "@/lib/services-data";
 import { SectionHeading } from "./section-heading";
 import { ctaButton } from "./buttons";
 import { estimateHref } from "@/lib/estimate-select";
+import { responsiveSrcSet } from "@/lib/site-images";
 
 // Generates a complete service page from a single ServiceConfig so all
 // service pages share one cohesive layout, voice, and visual system.
 export function ServicePage({ service }: { service: ServiceConfig }) {
+  // Intro image: an explicit feature image, else the second gallery photo, else none.
+  const feature = service.feature ?? service.gallery[1] ?? service.gallery[0];
   return (
     <>
       {/* ── Service hero ─────────────────────────────────────────────── */}
@@ -22,6 +25,8 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
         <div className="absolute inset-0 -z-10">
           <img
             src={service.heroImage}
+            srcSet={responsiveSrcSet(service.heroImage)}
+            sizes="100vw"
             alt={service.heroAlt}
             className="h-full w-full object-cover"
             loading="eager"
@@ -71,9 +76,30 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
         </div>
       </section>
 
+      {/* ── Breadcrumb ───────────────────────────────────────────────── */}
+      <nav aria-label="Breadcrumb" className="border-b border-border bg-background">
+        <ol className="mx-auto flex max-w-6xl items-center gap-1.5 px-6 py-3.5 text-sm text-muted-foreground">
+          <li>
+            <a href="/" className="font-medium text-primary hover:text-gold-deep">
+              Home
+            </a>
+          </li>
+          <li aria-hidden="true">
+            <ChevronRight className="size-3.5" />
+          </li>
+          <li aria-current="page">{service.title}</li>
+        </ol>
+      </nav>
+
       {/* ── Explanation ──────────────────────────────────────────────── */}
       <section className="section-pad bg-background">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+        <div
+          className={
+            feature
+              ? "mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16"
+              : "mx-auto max-w-3xl px-6"
+          }
+        >
           <div>
             <SectionHeading align="left" eyebrow="The Service" title={service.explanation.title} />
             <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -89,19 +115,16 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
               </a>
             </div>
           </div>
-          {(() => {
-            const feature = service.gallery[1] ?? service.gallery[0];
-            return (
-              <div className="overflow-hidden rounded-3xl border border-border shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]">
-                <img
-                  src={feature!.src}
-                  alt={feature!.alt}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full object-cover"
-                />
-              </div>
-            );
-          })()}
+          {feature && (
+            <div className="overflow-hidden rounded-3xl border border-border shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]">
+              <img
+                src={feature.src}
+                alt={feature.alt}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -169,39 +192,41 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
         </div>
       </section>
 
-      {/* ── Gallery ──────────────────────────────────────────────────── */}
-      <section className="section-pad bg-secondary/40">
-        <div className="mx-auto max-w-6xl px-6">
-          <SectionHeading
-            eyebrow="Our Work"
-            title="Our Work"
-            description="Photos from Taylor LawnCare projects and the kinds of properties we care for."
-          />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:gap-8">
-            {service.gallery.map((item) => (
-              <figure
-                key={item.label}
-                className="group relative overflow-hidden rounded-2xl border border-border shadow-[0_2px_20px_-14px_rgba(0,0,0,0.18)]"
-              >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-primary/70 via-primary/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center gap-2 p-5 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
-                  <span className="h-px w-6 bg-accent" />
-                  <span className="text-sm font-semibold tracking-wide">{item.label}</span>
-                </figcaption>
-              </figure>
-            ))}
+      {/* ── Gallery (only for services with real work photos) ───────── */}
+      {service.gallery.length > 0 && (
+        <section className="section-pad bg-secondary/40">
+          <div className="mx-auto max-w-6xl px-6">
+            <SectionHeading
+              eyebrow="Our Work"
+              title="Our Work"
+              description="Photos from Taylor Lawn Care projects and the kinds of properties we care for."
+            />
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:gap-8">
+              {service.gallery.map((item) => (
+                <figure
+                  key={item.label}
+                  className="group relative overflow-hidden rounded-2xl border border-border shadow-[0_2px_20px_-14px_rgba(0,0,0,0.18)]"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    loading="lazy"
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-primary/70 via-primary/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center gap-2 p-5 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
+                    <span className="h-px w-6 bg-accent" />
+                    <span className="text-sm font-semibold tracking-wide">{item.label}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="mt-10 text-center text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              Photos of Taylor Lawn Care's work
+            </p>
           </div>
-          <p className="mt-10 text-center text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground/70">
-            Photos of Taylor LawnCare's work
-          </p>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── FAQ ──────────────────────────────────────────────────────── */}
       <section className="section-pad bg-background">
@@ -227,6 +252,47 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+      </section>
+
+      {/* ── Related services & service area links ────────────────────── */}
+      <section className="section-pad bg-secondary/40">
+        <div className="mx-auto max-w-6xl px-6">
+          <SectionHeading
+            eyebrow="More From Taylor Lawn Care"
+            title="Related Services"
+            description="Many homeowners combine these services for one trusted provider."
+          />
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {service.related.map((key) => (
+              <li key={key}>
+                <a
+                  href={SERVICES[key].path}
+                  className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-[0_2px_20px_-14px_rgba(0,0,0,0.14)] transition-all hover:-translate-y-0.5 hover:border-accent/40"
+                >
+                  <span className="font-display text-lg font-semibold tracking-tight text-primary">
+                    {SERVICES[key].title}
+                  </span>
+                  <span className="mt-2 flex-1 text-[0.9rem] leading-relaxed text-muted-foreground">
+                    {SERVICES[key].shortDescription}
+                  </span>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-deep transition-all group-hover:gap-2.5">
+                    Learn more
+                    <ArrowRight className="size-4" />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 text-center text-sm text-muted-foreground">
+            Serving Eagle, Mukwonago, and nearby Wisconsin communities.{" "}
+            <a
+              href="/service-areas"
+              className="font-semibold text-primary underline-offset-4 hover:text-gold-deep hover:underline"
+            >
+              See all service areas
+            </a>
+          </p>
         </div>
       </section>
 

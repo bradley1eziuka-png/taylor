@@ -1,6 +1,6 @@
-# Taylor LawnCare: website mockup
+# Taylor Lawn Care: website mockup
 
-Mockup website for Taylor LawnCare LLC (Eagle, WI), built from the master contractor template.
+Mockup website for Taylor Lawn Care LLC (Eagle, WI), built from the master contractor template.
 **Not production-ready**: no domain, no live form endpoint (see below).
 
 ```bash

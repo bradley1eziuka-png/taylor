@@ -80,8 +80,8 @@ export function Gallery() {
           ))}
         </div>
 
-        <p className="mt-10 text-center text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground/70">
-          Photos of Taylor LawnCare's work
+        <p className="mt-10 text-center text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+          Photos of Taylor Lawn Care's work
         </p>
       </div>
     </section>

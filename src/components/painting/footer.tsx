@@ -2,7 +2,8 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 import { siteConfig } from "@/config";
 import { BUSINESS_EMAIL, BUSINESS_PHONE, BUSINESS_PHONE_TEL, COPY } from "@/lib/site-config";
-import { SERVICE_LIST } from "@/lib/services-data";
+import { ALL_SERVICES, SERVICES } from "@/lib/services-data";
+import { GoogleReviewsBadge, HAS_GOOGLE_REVIEWS } from "./google-reviews";
 import { Logo } from "./logo";
 
 const EXPLORE_LINKS = [
@@ -10,7 +11,7 @@ const EXPLORE_LINKS = [
   { label: "Our Work", href: "/#our-work" },
   { label: "About", href: "/#about" },
   { label: "Why Choose Us", href: "/#why-choose-us" },
-  { label: "Service Areas", href: "/#service-areas" },
+  { label: "Service Areas", href: "/service-areas" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -34,7 +35,9 @@ function ContactDetails() {
     .filter(Boolean)
     .join(address.street ? ", " : " ")
     .trim();
-  const socials = Object.entries(social).filter(([, url]) => url);
+  const socials = Object.entries(social).filter(
+    ([key, url]) => url && !(key === "google" && HAS_GOOGLE_REVIEWS),
+  );
   if (!BUSINESS_EMAIL && !addressLine && !hours.length && !serviceAreas.length && !socials.length)
     return null;
   return (
@@ -110,10 +113,11 @@ export function Footer() {
               {BUSINESS_PHONE}
             </a>
             <ContactDetails />
+            <GoogleReviewsBadge className="mt-5 text-white/85" />
           </div>
 
           <div>
-            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white/50">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white/65">
               Explore
             </h3>
             <ul className="mt-5 space-y-3">
@@ -131,14 +135,14 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white/50">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white/65">
               Services
             </h3>
             <ul className="mt-5 space-y-3">
-              {SERVICE_LIST.map((service) => (
-                <li key={service.slug}>
+              {ALL_SERVICES.map((service) => (
+                <li key={service.id}>
                   <a
-                    href={service.path}
+                    href={SERVICES[service.pageKey].path}
                     className="text-sm text-white/75 transition-colors hover:text-accent"
                   >
                     {service.title}
@@ -159,7 +163,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
           <p className="text-center text-xs text-white/55 sm:text-left">
-            © {year} Taylor LawnCare LLC. All rights reserved.
+            © {year} Taylor Lawn Care LLC. All rights reserved.
           </p>
           <p className="text-xs text-white/55">
             Lawn Care &amp; Property Maintenance · Eagle, Wisconsin

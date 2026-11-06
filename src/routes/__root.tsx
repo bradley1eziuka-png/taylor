@@ -10,9 +10,9 @@ import {
 import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { BUSINESS_NAME, SITE_URL } from "../lib/site-config";
+import { SITE_URL } from "../lib/site-config";
 import { siteConfig } from "../config";
-import { HOME_DESCRIPTION, HOME_TITLE, localBusinessJsonLd } from "../lib/seo";
+import { BRAND, HOME_DESCRIPTION, HOME_TITLE } from "../lib/seo";
 import { brandColorCss } from "../lib/brand";
 
 function NotFoundComponent() {
@@ -79,25 +79,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: HOME_TITLE },
       { name: "description", content: HOME_DESCRIPTION },
-      { name: "author", content: BUSINESS_NAME },
-      // Mockup safety: keep this preview out of search indexes until a real domain launches.
+      { name: "author", content: BRAND },
+      // Keep the site out of search indexes until a production domain is configured.
       ...(SITE_URL ? [] : [{ name: "robots", content: "noindex, nofollow" }]),
       { name: "theme-color", content: siteConfig.branding.colors.primary ?? "#173D2A" },
     ],
     links: [
-      { rel: "icon", href: siteConfig.branding.favicon },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "icon", href: siteConfig.branding.favicon, type: "image/svg+xml" },
+      { rel: "icon", href: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+      // Manrope is self-hosted (public/fonts) so first paint never waits on a third-party stylesheet.
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap",
+        rel: "preload",
+        href: "/fonts/manrope-latin.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
       },
       {
         rel: "stylesheet",
         href: appCss,
       },
     ],
-    scripts: [{ type: "application/ld+json", children: localBusinessJsonLd() }],
     styles: brandColorCss() ? [{ children: brandColorCss() }] : [],
   }),
   shellComponent: RootShell,

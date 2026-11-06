@@ -11,7 +11,7 @@ const REASONS = [
   {
     icon: ShieldCheck,
     title: "Insured",
-    description: "Taylor LawnCare is insured.",
+    description: "Taylor Lawn Care is insured.",
   },
   {
     icon: MapPin,
@@ -37,7 +37,7 @@ export function WhyChooseUs() {
         <SectionHeading
           eyebrow="Why Choose Us"
           title="Lawn Care You Can Count On"
-          description="Noah built Taylor LawnCare on dependable service and relationships customers can trust."
+          description="Noah built Taylor Lawn Care on dependable service and relationships customers can trust."
         />
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-6 lg:gap-6">

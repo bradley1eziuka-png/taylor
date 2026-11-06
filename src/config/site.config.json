@@ -1,10 +1,15 @@
 {
   "business": {
-    "name": "Taylor LawnCare",
-    "shortName": "Taylor LawnCare",
+    "name": "Taylor Lawn Care",
+    "shortName": "Taylor Lawn Care",
     "phone": "(262) 399-8622",
     "email": "Taylorlawncare262@gmail.com",
-    "address": { "street": "", "city": "Eagle", "state": "WI", "zip": "" },
+    "address": {
+      "street": "",
+      "city": "Eagle",
+      "state": "WI",
+      "zip": ""
+    },
     "serviceAreas": [
       "Eagle",
       "Mukwonago",
@@ -21,27 +26,48 @@
       "East Troy",
       "Elkhorn"
     ],
-    "hours": [{ "days": "Monday–Friday", "hours": "7:00 AM – 7:00 PM" }],
+    "hours": [
+      {
+        "days": "Monday–Friday",
+        "hours": "7:00 AM – 7:00 PM"
+      }
+    ],
     "social": {
       "facebook": "",
       "instagram": "",
-      "google": "https://share.google/3x0TpIFZ8b7vyc4oB",
+      "google": "https://share.google/Q6ehQk83sjtXEqzrh",
       "yelp": "",
       "nextdoor": "",
       "youtube": ""
+    },
+    "googleReviews": {
+      "rating": "5.0",
+      "count": 7,
+      "url": "https://share.google/Q6ehQk83sjtXEqzrh"
     }
   },
   "branding": {
     "logo": {
       "src": "/images/taylor-lawncare-logo.webp",
-      "alt": "Taylor LawnCare logo"
+      "alt": "Taylor Lawn Care logo"
     },
     "favicon": "/favicon.svg",
     "colors": {},
     "images": {}
   },
   "services": {
-    "enabled": ["mowing", "mulch", "cleanups", "gardenBeds", "aeration"],
+    "enabled": [
+      "mowing",
+      "mulch",
+      "cleanups",
+      "aeration",
+      "bedMaintenance",
+      "trimming",
+      "brushRemoval",
+      "planting",
+      "gutterCleaning",
+      "gardenBeds"
+    ],
     "overrides": {}
   },
   "content": {
@@ -49,17 +75,17 @@
       "eyebrow": "Lawn Care in Eagle, WI | Serving Waukesha County",
       "headline": "Professional Lawn Care",
       "tagline": "Free estimates. Insured. Locally owned.",
-      "subheadline": "From routine lawn mowing to mulch installation and seasonal cleanups, Taylor LawnCare helps homeowners in Eagle and throughout Waukesha County keep their properties looking their best."
+      "subheadline": "From routine lawn mowing to mulch installation and seasonal cleanups, Taylor Lawn Care helps homeowners in Eagle and throughout Waukesha County keep their properties looking their best."
     },
     "about": {},
     "finalCta": {},
     "testimonials": []
   },
   "seo": {
-    "siteUrl": "",
-    "title": "Taylor LawnCare | Lawn Care & Lawn Mowing in Eagle, WI",
-    "description": "",
-    "ogImage": "",
+    "siteUrl": "https://taylorlawncarewi.com",
+    "title": "Lawn Care in Eagle, WI | Taylor Lawn Care LLC",
+    "description": "Professional lawn mowing, mulch installation, seasonal cleanups and more in Eagle, Mukwonago and surrounding Wisconsin communities. Get a free estimate.",
+    "ogImage": "/images/taylor-lawncare-social.jpg",
     "locale": "en_US"
   },
   "form": {

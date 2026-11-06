@@ -1,4 +1,4 @@
-// `npm run check`: pre-launch checklist for the Taylor LawnCare site.
+// `npm run check`: pre-launch checklist for the Taylor Lawn Care site.
 // Flags placeholders still in site.config.json and any text that looks like
 // another business's details leaked into the source.
 import { readFileSync, readdirSync, statSync } from "node:fs";

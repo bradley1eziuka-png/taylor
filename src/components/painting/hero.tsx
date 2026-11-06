@@ -4,16 +4,27 @@ import { BUSINESS_PHONE, BUSINESS_PHONE_TEL, COPY } from "@/lib/site-config";
 import { IMAGES } from "@/lib/site-images";
 import { ctaButton } from "./buttons";
 import { EstimateFormCard } from "./estimate-form";
+import { GoogleReviewsBadge } from "./google-reviews";
 
 // Two-column hero: business name + tagline + description + CTAs on the left,
 // premium estimate form card on the right. Stacks vertically on mobile in
 // the order: headline/description → CTAs → form.
+// Smaller copies of the default hero photo let phones download ~100 KB instead of ~440 KB.
+// Only used while the hero image is still the default file.
+const DEFAULT_HERO = "/images/hero-striped-lawn-mower.webp";
+const HERO_SRCSET =
+  IMAGES.hero === DEFAULT_HERO
+    ? `/images/hero-striped-lawn-mower-800.webp 800w, /images/hero-striped-lawn-mower-1200.webp 1200w, ${DEFAULT_HERO} 1600w`
+    : undefined;
+
 export function Hero() {
   return (
     <section id="top" className="relative isolate flex min-h-svh items-center overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <img
           src={IMAGES.hero}
+          srcSet={HERO_SRCSET}
+          sizes="100vw"
           alt="A red mower cutting a large striped lawn in front of a home and evergreen trees"
           className="h-full w-full object-cover"
           loading="eager"
@@ -64,6 +75,7 @@ export function Hero() {
                 {BUSINESS_PHONE}
               </a>
             </p>
+            <GoogleReviewsBadge className="mt-3 text-white/80" />
           </div>
 
           {/* Right column ~40%: premium estimate form card */}

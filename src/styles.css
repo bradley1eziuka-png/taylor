@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system: Taylor LawnCare (adapted from the premium contractor template).
+ * Design system: Taylor Lawn Care (adapted from the premium contractor template).
  *
  * Palette:
  *   Dark forest green #173D2A  -> --primary / --foreground (structural)
@@ -15,8 +15,16 @@
  *   Golden yellow     #E9AA3D  -> --accent (CTA buttons, small highlights)
  *   Deep gold         ~#9A6A12 -> --gold-deep (accent text on light backgrounds)
  *
- * Typography: Manrope (display + body), loaded via <link> in __root.tsx.
+ * Typography: Manrope (display + body), self-hosted variable font (public/fonts), preloaded in __root.tsx.
  */
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/manrope-latin.woff2") format("woff2");
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

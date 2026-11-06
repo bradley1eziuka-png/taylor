@@ -12,13 +12,13 @@ import { FinalCta } from "@/components/painting/final-cta";
 import { ContactSection } from "@/components/painting/contact-section";
 import { ServiceAreas } from "@/components/painting/service-areas";
 import { Testimonials } from "@/components/painting/testimonials";
-import { HOME_DESCRIPTION, HOME_TITLE, pageHead } from "@/lib/seo";
+import { homeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   // Keep ?service=<id> so estimate buttons on other pages can preselect a service.
   validateSearch: (search: Record<string, unknown>): { service?: string } =>
     typeof search["service"] === "string" ? { service: search["service"] } : {},
-  head: () => pageHead({ title: HOME_TITLE, description: HOME_DESCRIPTION, path: "/" }),
+  head: () => homeHead(),
   component: Index,
 });
 

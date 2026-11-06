@@ -1,5 +1,5 @@
 // ───────────────────────────────────────────────────────────────────────────
-// Service content for Taylor LawnCare.
+// Service content for Taylor Lawn Care.
 //
 // Every service page is generated from this single source of truth so all
 // pages share one voice, layout, and visual system. Nine services are grouped
@@ -33,6 +33,13 @@ export interface ServiceConfig {
   faqs: ServiceFaq[];
   heroImage: string;
   heroAlt: string;
+  // Optional second image beside the intro text. Omitted when no suitable photo exists.
+  feature?: { src: string; alt: string };
+  // Search snippet. Title is combined with the brand name; keep it short.
+  seoTitle: string;
+  seoDescription: string;
+  // Other service pages linked from the "Related Services" section.
+  related: ServiceKey[];
   // ALL_SERVICES id preselected when a visitor clicks an estimate button on this page.
   estimateId: string;
 }
@@ -67,7 +74,7 @@ const BASE_SERVICES = {
       "Reliable weekly or bi-weekly mowing that keeps your lawn clean, even, and looking its best all season.",
     explanation: {
       title: "A Lawn That Always Looks Cared For",
-      body: "Regular mowing is the foundation of a good-looking yard. Taylor LawnCare offers weekly and bi-weekly lawn mowing for homeowners in Eagle and throughout Waukesha County, so your lawn stays neat without you giving up your weekends. Consistent cutting keeps grass healthy and even, and the finished lawn makes the whole property look sharper.",
+      body: "Regular mowing is the foundation of a good-looking yard. Taylor Lawn Care offers weekly and bi-weekly lawn mowing for homeowners in Eagle, Mukwonago, and throughout Waukesha County, so your lawn stays neat without you giving up your weekends. Consistent cutting keeps grass healthy and even, and the finished lawn makes the whole property look sharper.",
     },
     benefits: [
       {
@@ -121,6 +128,10 @@ const BASE_SERVICES = {
     heroImage: IMAGES.mowing,
     heroAlt:
       "A freshly mowed lawn with bright green stripes beside a gravel shoulder and mature trees",
+    seoTitle: "Lawn Mowing in Eagle, WI",
+    seoDescription:
+      "Weekly and bi-weekly lawn mowing for homeowners in Eagle, Mukwonago and nearby Waukesha County communities. Request a free estimate from Taylor Lawn Care.",
+    related: ["aeration", "mulch", "cleanups"],
     estimateId: "mowing",
   },
 
@@ -133,7 +144,7 @@ const BASE_SERVICES = {
       "Fresh mulch and stone that define your landscape beds, finish your yard, and boost curb appeal.",
     explanation: {
       title: "Finished Beds, Cleaner Curb Appeal",
-      body: "Fresh mulch or stone gives landscape beds a clean, finished look and helps them stay tidy. Taylor LawnCare installs mulch and stone for homeowners in Eagle and across Waukesha County, leaving crisp bed lines and an even layer that makes trees, shrubs, and plantings stand out against the lawn.",
+      body: "Fresh mulch or stone gives landscape beds a clean, finished look and helps them stay tidy. Taylor Lawn Care installs mulch and stone for homeowners in Eagle and across Waukesha County, leaving crisp bed lines and an even layer that makes trees, shrubs, and plantings stand out against the lawn.",
     },
     benefits: [
       {
@@ -177,7 +188,7 @@ const BASE_SERVICES = {
     faqs: [
       {
         q: "Can you install mulch and stone?",
-        a: "Yes. Taylor LawnCare installs both mulch and stone. Tell us about your beds and the look you're after, and we'll put together a free estimate.",
+        a: "Yes. Taylor Lawn Care installs both mulch and stone. Tell us about your beds and the look you're after, and we'll put together a free estimate.",
       },
       {
         q: "When is a good time to refresh mulch?",
@@ -186,6 +197,10 @@ const BASE_SERVICES = {
     ],
     heroImage: IMAGES.mulch,
     heroAlt: "A curved landscape bed with dark mulch and stone edging in front of a two-story home",
+    seoTitle: "Mulch & Stone Installation, Eagle WI",
+    seoDescription:
+      "Mulch and stone installation for landscape beds in Eagle, Mukwonago and surrounding Wisconsin communities. Free estimates from Taylor Lawn Care.",
+    related: ["bedMaintenance", "planting", "cleanups"],
     estimateId: "mulch",
   },
 
@@ -198,7 +213,7 @@ const BASE_SERVICES = {
       "Spring and fall cleanups, brush and yard waste removal, and gutter cleaning to reset your property for the season.",
     explanation: {
       title: "A Fresh Start Every Season",
-      body: "Leaves, branches, and debris pile up as the seasons change. Taylor LawnCare's seasonal cleanups clear your property so it's ready for what's next. We also handle brush and yard waste removal and gutter cleaning, so the whole property looks and works better, without you having to spend a weekend on it.",
+      body: "Leaves, branches, and debris pile up as the seasons change. Taylor Lawn Care's seasonal cleanups clear your property so it's ready for what's next. We also handle brush and yard waste removal and gutter cleaning, so the whole property looks and works better, without you having to spend a weekend on it.",
     },
     benefits: [
       {
@@ -251,6 +266,10 @@ const BASE_SERVICES = {
     ],
     heroImage: IMAGES.cleanups,
     heroAlt: "A yard covered in fallen leaves with long tree shadows across the lawn",
+    seoTitle: "Seasonal Yard Cleanups in Eagle, WI",
+    seoDescription:
+      "Spring and fall yard cleanups, including leaf and debris removal, for homeowners in Eagle and Waukesha County. Free estimates from Taylor Lawn Care.",
+    related: ["brushRemoval", "gutterCleaning", "bedMaintenance"],
     estimateId: "cleanups",
   },
 
@@ -263,7 +282,7 @@ const BASE_SERVICES = {
       "Garden bed maintenance, shrub and bush trimming, and planting of flowers, shrubs, and small trees.",
     explanation: {
       title: "Landscaping That Stays Looking Good",
-      body: "Well-kept garden beds are what make a property feel finished. Taylor LawnCare handles garden bed maintenance, shrub and bush trimming, and the planting of flowers, shrubs, and small trees, so your landscaping stays neat and healthy-looking from season to season.",
+      body: "Well-kept garden beds are what make a property feel finished. Taylor Lawn Care handles garden bed maintenance, shrub and bush trimming, and the planting of flowers, shrubs, and small trees, so your landscaping stays neat and healthy-looking from season to season.",
     },
     benefits: [
       {
@@ -315,6 +334,10 @@ const BASE_SERVICES = {
     ],
     heroImage: IMAGES.gardenBeds,
     heroAlt: "A mulched garden bed filled with green plants beside a lawn and deck",
+    seoTitle: "Garden Beds & Shrubs in Eagle, WI",
+    seoDescription:
+      "Garden bed maintenance, shrub and bush trimming, and flower, shrub and small tree planting in Eagle and Waukesha County. Free estimates available.",
+    related: ["bedMaintenance", "trimming", "planting", "mulch"],
     estimateId: "bed-maintenance",
   },
 
@@ -378,7 +401,254 @@ const BASE_SERVICES = {
     ],
     heroImage: IMAGES.aeration,
     heroAlt: "A lush, freshly mowed lawn with bright green stripes under a cloudy sky",
+    seoTitle: "Lawn Aeration in Eagle, WI",
+    seoDescription:
+      "Lawn aeration for homeowners in Eagle, Mukwonago and nearby Wisconsin communities. Pair it with mowing and get a free estimate from Taylor Lawn Care.",
+    related: ["mowing", "cleanups", "mulch"],
     estimateId: "aeration",
+  },
+
+  bedMaintenance: {
+    slug: "garden-bed-maintenance",
+    path: "/services/garden-bed-maintenance",
+    title: "Garden Bed Maintenance",
+    eyebrow: "Garden Bed Cleanup in Eagle, WI",
+    shortDescription:
+      "Keep your garden beds clean, defined, and free of the clutter that builds up over time.",
+    explanation: {
+      title: "Beds That Look Cared For All Season",
+      body: "Garden beds collect fallen leaves, dead plant material, and debris, and the longer it sits the messier the whole landscape looks. Taylor Lawn Care maintains garden beds for homeowners in Eagle and across Waukesha County, clearing the clutter so your plants, shrubs, and mulch stand out the way they should.",
+    },
+    benefits: [
+      {
+        title: "Cleaner, Sharper Beds",
+        description: "Leaves and debris cleared out so plants and mulch show at their best.",
+      },
+      {
+        title: "A Better Foundation for Mulch",
+        description: "A tidy bed makes a fresh layer of mulch or stone look even better.",
+      },
+      {
+        title: "One Trusted Provider",
+        description: "Pair bed care with mowing, trimming, and seasonal cleanups.",
+      },
+    ],
+    process: SHARED_PROCESS,
+    gallery: [],
+    faqs: [
+      {
+        q: "What does garden bed maintenance include?",
+        a: "Every property is different. Tell us about your beds and what's bothering you, and we'll spell out exactly what's included in your free estimate.",
+      },
+      {
+        q: "Can bed maintenance be combined with mulch installation?",
+        a: "Yes. Many homeowners clean up their beds and add fresh mulch or stone in the same visit. Ask us about it when you request an estimate.",
+      },
+    ],
+    heroImage: IMAGES.serviceBedMaintenance,
+    heroAlt:
+      "A worker in gloves raking dead leaves from a mulched garden bed beside trimmed shrubs and a debris bag",
+    feature: {
+      src: IMAGES.galleryBedA,
+      alt: "A large mulched garden bed with green plants and a stepping stone beside a deck",
+    },
+    seoTitle: "Garden Bed Maintenance in Eagle, WI",
+    seoDescription:
+      "Garden bed maintenance and cleanup for homeowners in Eagle, Mukwonago and nearby Waukesha County communities. Free estimates from Taylor Lawn Care.",
+    related: ["mulch", "trimming", "planting"],
+    estimateId: "bed-maintenance",
+  },
+
+  trimming: {
+    slug: "shrub-bush-trimming",
+    path: "/services/shrub-bush-trimming",
+    title: "Shrub & Bush Trimming",
+    eyebrow: "Shrub Trimming in Eagle, WI",
+    shortDescription:
+      "Regular trimming keeps shrubs and bushes shaped, tidy, and in proportion with your property.",
+    explanation: {
+      title: "Shrubs That Stay in Shape",
+      body: "Overgrown shrubs and bushes can crowd walkways, cover windows, and make a well-kept property look neglected. Taylor Lawn Care trims shrubs and bushes for homeowners in Eagle, Mukwonago, and throughout Waukesha County, keeping them neat and in proportion with the rest of your landscape.",
+    },
+    benefits: [
+      {
+        title: "Neat, Even Shapes",
+        description: "Trimmed shrubs and bushes look intentional and well maintained.",
+      },
+      {
+        title: "Better Curb Appeal",
+        description: "Tidy shrubs frame your home and make the whole yard look finished.",
+      },
+      {
+        title: "Pairs With Bed Care",
+        description: "Add trimming to garden bed maintenance or a seasonal cleanup.",
+      },
+    ],
+    process: SHARED_PROCESS,
+    gallery: [],
+    faqs: [
+      {
+        q: "Do you trim both shrubs and bushes?",
+        a: "Yes. Shrub and bush trimming is one of our services. Tell us what you have around your home and we'll include it in your free estimate.",
+      },
+      {
+        q: "Can trimming be added to my regular service?",
+        a: "Yes. It pairs well with lawn mowing, garden bed maintenance, and seasonal cleanups, so you can keep everything with one provider.",
+      },
+    ],
+    heroImage: IMAGES.galleryBedB,
+    heroAlt: "A mulched landscape bed with young plants and daffodils along the side of a home",
+    seoTitle: "Shrub & Bush Trimming in Eagle, WI",
+    seoDescription:
+      "Shrub and bush trimming for homeowners in Eagle, Mukwonago and surrounding Wisconsin communities. Request a free estimate from Taylor Lawn Care.",
+    related: ["bedMaintenance", "planting", "cleanups"],
+    estimateId: "trimming",
+  },
+
+  brushRemoval: {
+    slug: "brush-yard-waste-removal",
+    path: "/services/brush-yard-waste-removal",
+    title: "Brush & Yard Waste Removal",
+    eyebrow: "Yard Waste Removal in Eagle, WI",
+    shortDescription:
+      "We haul away brush, branches, and yard waste so you're not left with a pile to deal with.",
+    explanation: {
+      title: "Clear the Pile, Keep the Weekend",
+      body: "Fallen branches, brush, and leaf piles are heavy, awkward work to move on your own. Taylor Lawn Care handles brush and yard waste removal for homeowners in Eagle and across Waukesha County, so the debris is gone and your property is ready for whatever comes next.",
+    },
+    benefits: [
+      {
+        title: "Brush & Debris Hauled Away",
+        description: "We take the pile with us instead of leaving it for you to handle.",
+      },
+      {
+        title: "A Cleaner Property",
+        description: "Clearing the clutter makes the whole yard look and feel better.",
+      },
+      {
+        title: "Part of a Full Cleanup",
+        description: "Combine removal with a seasonal cleanup for a complete reset.",
+      },
+    ],
+    process: SHARED_PROCESS,
+    gallery: [],
+    faqs: [
+      {
+        q: "What kind of yard waste can you remove?",
+        a: "Brush, branches, leaves, and similar landscape debris. Describe what you have when you request an estimate and we'll confirm what we can take.",
+      },
+      {
+        q: "Can removal be part of a seasonal cleanup?",
+        a: "Yes. Many homeowners schedule brush and yard waste removal along with a spring or fall cleanup.",
+      },
+    ],
+    heroImage: IMAGES.serviceBrush,
+    heroAlt: "A large pile of leaves and yard debris on a lawn beside a trailer and pickup truck",
+    feature: {
+      src: IMAGES.cleanups,
+      alt: "A yard covered in fallen leaves with long tree shadows across the lawn",
+    },
+    seoTitle: "Brush & Yard Waste Removal, Eagle WI",
+    seoDescription:
+      "Brush and yard waste removal for homeowners in Eagle, Mukwonago and nearby Waukesha County communities. Request a free estimate from Taylor Lawn Care.",
+    related: ["cleanups", "gutterCleaning", "trimming"],
+    estimateId: "brush-removal",
+  },
+
+  planting: {
+    slug: "flower-shrub-small-tree-planting",
+    path: "/services/flower-shrub-small-tree-planting",
+    title: "Flower, Shrub & Small Tree Planting",
+    eyebrow: "Landscape Planting in Eagle, WI",
+    shortDescription:
+      "Add color and structure to your property with new flowers, shrubs, and small trees.",
+    explanation: {
+      title: "New Plantings for Your Landscape",
+      body: "New flowers, shrubs, and small trees can change the look of a yard. Taylor Lawn Care plants them for homeowners in Eagle, Mukwonago, and throughout Waukesha County, adding color and structure to your beds and helping your property feel finished.",
+    },
+    benefits: [
+      {
+        title: "Color and Structure",
+        description: "Flowers, shrubs, and small trees give your landscape depth and variety.",
+      },
+      {
+        title: "Planted in Your Beds",
+        description: "New plantings work best in beds that are clean and well defined.",
+      },
+      {
+        title: "Easy to Keep Up",
+        description: "Pair planting with bed maintenance, mulch, and trimming.",
+      },
+    ],
+    process: SHARED_PROCESS,
+    gallery: [],
+    faqs: [
+      {
+        q: "What can you plant?",
+        a: "We plant flowers, shrubs, and small trees. Tell us what you have in mind and we'll include it in your free estimate.",
+      },
+      {
+        q: "Can you add mulch around new plantings?",
+        a: "Yes. Mulch and stone installation is one of our services, and it pairs naturally with new plantings.",
+      },
+    ],
+    heroImage: IMAGES.servicePlanting,
+    heroAlt:
+      "A mulched landscape bed with pink and white hydrangeas, hostas, shrubs, and a small Japanese maple beside a lawn",
+    feature: {
+      src: IMAGES.galleryBedB,
+      alt: "A mulched landscape bed with young plants and daffodils along the side of a home",
+    },
+    seoTitle: "Flower & Shrub Planting in Eagle, WI",
+    seoDescription:
+      "Flower, shrub and small tree planting for homeowners in Eagle, Mukwonago and surrounding Wisconsin communities. Free estimates from Taylor Lawn Care.",
+    related: ["mulch", "bedMaintenance", "trimming"],
+    estimateId: "planting",
+  },
+
+  gutterCleaning: {
+    slug: "gutter-cleaning",
+    path: "/services/gutter-cleaning",
+    title: "Gutter Cleaning",
+    eyebrow: "Gutter Cleaning in Eagle, WI",
+    shortDescription: "Clear out your gutters as part of a complete seasonal reset for your home.",
+    explanation: {
+      title: "Gutters That Can Do Their Job",
+      body: "Leaves and debris collect in gutters, especially after fall. Taylor Lawn Care cleans gutters for homeowners in Eagle, Mukwonago, and across Waukesha County, and it fits naturally alongside a seasonal cleanup so the whole property gets reset at once.",
+    },
+    benefits: [
+      {
+        title: "Leaves & Debris Cleared",
+        description: "Get buildup out of your gutters so they're ready for the season.",
+      },
+      {
+        title: "Done With Your Cleanup",
+        description: "Add gutter cleaning to a spring or fall cleanup in one visit.",
+      },
+      {
+        title: "We Handle the Climbing",
+        description: "Skip the ladder work and let us take care of it.",
+      },
+    ],
+    process: SHARED_PROCESS,
+    gallery: [],
+    faqs: [
+      {
+        q: "When should gutters be cleaned?",
+        a: "Many homeowners clean gutters in fall after the leaves drop, and again in spring. Ask us about timing for your home.",
+      },
+      {
+        q: "Can I add gutter cleaning to a seasonal cleanup?",
+        a: "Yes. Tell us you'd like it included when you request your free estimate.",
+      },
+    ],
+    heroImage: IMAGES.cleanups,
+    heroAlt: "A yard covered in fallen leaves with long tree shadows across the lawn",
+    seoTitle: "Gutter Cleaning in Eagle, WI",
+    seoDescription:
+      "Gutter cleaning for homeowners in Eagle, Mukwonago and nearby Waukesha County communities. Add it to a seasonal cleanup. Free estimates available.",
+    related: ["cleanups", "brushRemoval", "mowing"],
+    estimateId: "gutter-cleaning",
   },
 } satisfies Record<string, ServiceConfig>;
 
@@ -465,7 +735,7 @@ export const ALL_SERVICES: OfferedService[] = [
       "Keep your garden beds clean, defined, and free of the clutter that builds up over time.",
     image: IMAGES.serviceBedMaintenance,
     alt: "A worker in gloves raking dead leaves from a mulched garden bed beside trimmed shrubs and a debris bag",
-    pageKey: "gardenBeds",
+    pageKey: "bedMaintenance",
   },
   {
     id: "trimming",
@@ -474,7 +744,7 @@ export const ALL_SERVICES: OfferedService[] = [
       "Regular trimming keeps shrubs and bushes shaped, tidy, and in proportion with your property.",
     image: IMAGES.serviceTrimming,
     alt: "Hands in work gloves trimming a green hedge with a red hedge trimmer",
-    pageKey: "gardenBeds",
+    pageKey: "trimming",
   },
   {
     id: "brush-removal",
@@ -482,7 +752,7 @@ export const ALL_SERVICES: OfferedService[] = [
     description: "We haul away brush and yard waste so you're not left with a pile to deal with.",
     image: IMAGES.serviceBrush,
     alt: "A large pile of leaves and yard debris on a lawn beside a trailer and pickup truck",
-    pageKey: "cleanups",
+    pageKey: "brushRemoval",
   },
   {
     id: "planting",
@@ -491,7 +761,7 @@ export const ALL_SERVICES: OfferedService[] = [
       "Add color and structure to your property with new flowers, shrubs, and small trees.",
     image: IMAGES.servicePlanting,
     alt: "A mulched landscape bed with pink and white hydrangeas, hostas, shrubs, and a small Japanese maple beside a lawn",
-    pageKey: "gardenBeds",
+    pageKey: "planting",
   },
   {
     id: "gutter-cleaning",
@@ -499,7 +769,7 @@ export const ALL_SERVICES: OfferedService[] = [
     description: "Clear out your gutters as part of a complete seasonal reset for your home.",
     image: IMAGES.serviceGutter,
     alt: "A gloved hand clearing dead leaves from a rain gutter beside a ladder",
-    pageKey: "cleanups",
+    pageKey: "gutterCleaning",
   },
 ];
 

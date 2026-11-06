@@ -7,7 +7,7 @@ import { SectionHeading } from "./section-heading";
 // Prairie, Genesee, Dousman and Big Bend are in Waukesha County. Palmyra
 // (Jefferson Co.), East Troy and Elkhorn (Walworth Co.) are neighboring
 // communities, so they are listed separately to keep the geography accurate.
-const NEARBY = ["Palmyra", "East Troy", "Elkhorn"];
+export const NEARBY = ["Palmyra", "East Troy", "Elkhorn"];
 
 export function ServiceAreas() {
   const areas = siteConfig.business.serviceAreas;
@@ -21,7 +21,7 @@ export function ServiceAreas() {
         <SectionHeading
           eyebrow="Service Areas"
           title="Lawn Care Near Eagle, WI"
-          description="Based in Eagle, Taylor LawnCare serves homeowners throughout Waukesha County and nearby communities."
+          description="Based in Eagle, Taylor Lawn Care serves homeowners throughout Waukesha County and nearby communities."
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-[1.4fr_1fr]">
@@ -31,14 +31,20 @@ export function ServiceAreas() {
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
           Don't see your town? Call or send us a message and we're happy to let you know if we can
-          help.
+          help.{" "}
+          <a
+            href="/service-areas"
+            className="font-semibold text-primary underline-offset-4 hover:text-gold-deep hover:underline"
+          >
+            View service area details
+          </a>
         </p>
       </div>
     </section>
   );
 }
 
-function AreaCard({ title, areas }: { title: string; areas: string[] }) {
+export function AreaCard({ title, areas }: { title: string; areas: string[] }) {
   return (
     <div className="rounded-2xl border border-border bg-card p-7 shadow-[0_2px_20px_-14px_rgba(0,0,0,0.14)]">
       <h3 className="font-display text-lg font-semibold tracking-tight text-primary">{title}</h3>

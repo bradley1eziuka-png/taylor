@@ -10,23 +10,57 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServiceAreasRouteImport } from './routes/service-areas'
+import { Route as ServicesBrushYardWasteRemovalRouteImport } from './routes/services.brush-yard-waste-removal'
+import { Route as ServicesFlowerShrubSmallTreePlantingRouteImport } from './routes/services.flower-shrub-small-tree-planting'
+import { Route as ServicesGardenBedMaintenanceRouteImport } from './routes/services.garden-bed-maintenance'
 import { Route as ServicesGardenBedsShrubsPlantingRouteImport } from './routes/services.garden-beds-shrubs-planting'
+import { Route as ServicesGutterCleaningRouteImport } from './routes/services.gutter-cleaning'
 import { Route as ServicesLawnAerationRouteImport } from './routes/services.lawn-aeration'
 import { Route as ServicesLawnMowingRouteImport } from './routes/services.lawn-mowing'
 import { Route as ServicesMulchStoneInstallationRouteImport } from './routes/services.mulch-stone-installation'
 import { Route as ServicesSeasonalCleanupsRouteImport } from './routes/services.seasonal-cleanups'
+import { Route as ServicesShrubBushTrimmingRouteImport } from './routes/services.shrub-bush-trimming'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiceAreasRoute = ServiceAreasRouteImport.update({
+  id: '/service-areas',
+  path: '/service-areas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesBrushYardWasteRemovalRoute =
+  ServicesBrushYardWasteRemovalRouteImport.update({
+    id: '/services/brush-yard-waste-removal',
+    path: '/services/brush-yard-waste-removal',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesFlowerShrubSmallTreePlantingRoute =
+  ServicesFlowerShrubSmallTreePlantingRouteImport.update({
+    id: '/services/flower-shrub-small-tree-planting',
+    path: '/services/flower-shrub-small-tree-planting',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesGardenBedMaintenanceRoute =
+  ServicesGardenBedMaintenanceRouteImport.update({
+    id: '/services/garden-bed-maintenance',
+    path: '/services/garden-bed-maintenance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesGardenBedsShrubsPlantingRoute =
   ServicesGardenBedsShrubsPlantingRouteImport.update({
     id: '/services/garden-beds-shrubs-planting',
     path: '/services/garden-beds-shrubs-planting',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServicesGutterCleaningRoute = ServicesGutterCleaningRouteImport.update({
+  id: '/services/gutter-cleaning',
+  path: '/services/gutter-cleaning',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesLawnAerationRoute = ServicesLawnAerationRouteImport.update({
   id: '/services/lawn-aeration',
   path: '/services/lawn-aeration',
@@ -49,66 +83,114 @@ const ServicesSeasonalCleanupsRoute =
     path: '/services/seasonal-cleanups',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServicesShrubBushTrimmingRoute =
+  ServicesShrubBushTrimmingRouteImport.update({
+    id: '/services/shrub-bush-trimming',
+    path: '/services/shrub-bush-trimming',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/service-areas': typeof ServiceAreasRoute
+  '/services/brush-yard-waste-removal': typeof ServicesBrushYardWasteRemovalRoute
+  '/services/flower-shrub-small-tree-planting': typeof ServicesFlowerShrubSmallTreePlantingRoute
+  '/services/garden-bed-maintenance': typeof ServicesGardenBedMaintenanceRoute
   '/services/garden-beds-shrubs-planting': typeof ServicesGardenBedsShrubsPlantingRoute
+  '/services/gutter-cleaning': typeof ServicesGutterCleaningRoute
   '/services/lawn-aeration': typeof ServicesLawnAerationRoute
   '/services/lawn-mowing': typeof ServicesLawnMowingRoute
   '/services/mulch-stone-installation': typeof ServicesMulchStoneInstallationRoute
   '/services/seasonal-cleanups': typeof ServicesSeasonalCleanupsRoute
+  '/services/shrub-bush-trimming': typeof ServicesShrubBushTrimmingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/service-areas': typeof ServiceAreasRoute
+  '/services/brush-yard-waste-removal': typeof ServicesBrushYardWasteRemovalRoute
+  '/services/flower-shrub-small-tree-planting': typeof ServicesFlowerShrubSmallTreePlantingRoute
+  '/services/garden-bed-maintenance': typeof ServicesGardenBedMaintenanceRoute
   '/services/garden-beds-shrubs-planting': typeof ServicesGardenBedsShrubsPlantingRoute
+  '/services/gutter-cleaning': typeof ServicesGutterCleaningRoute
   '/services/lawn-aeration': typeof ServicesLawnAerationRoute
   '/services/lawn-mowing': typeof ServicesLawnMowingRoute
   '/services/mulch-stone-installation': typeof ServicesMulchStoneInstallationRoute
   '/services/seasonal-cleanups': typeof ServicesSeasonalCleanupsRoute
+  '/services/shrub-bush-trimming': typeof ServicesShrubBushTrimmingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/service-areas': typeof ServiceAreasRoute
+  '/services/brush-yard-waste-removal': typeof ServicesBrushYardWasteRemovalRoute
+  '/services/flower-shrub-small-tree-planting': typeof ServicesFlowerShrubSmallTreePlantingRoute
+  '/services/garden-bed-maintenance': typeof ServicesGardenBedMaintenanceRoute
   '/services/garden-beds-shrubs-planting': typeof ServicesGardenBedsShrubsPlantingRoute
+  '/services/gutter-cleaning': typeof ServicesGutterCleaningRoute
   '/services/lawn-aeration': typeof ServicesLawnAerationRoute
   '/services/lawn-mowing': typeof ServicesLawnMowingRoute
   '/services/mulch-stone-installation': typeof ServicesMulchStoneInstallationRoute
   '/services/seasonal-cleanups': typeof ServicesSeasonalCleanupsRoute
+  '/services/shrub-bush-trimming': typeof ServicesShrubBushTrimmingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/service-areas'
+    | '/services/brush-yard-waste-removal'
+    | '/services/flower-shrub-small-tree-planting'
+    | '/services/garden-bed-maintenance'
     | '/services/garden-beds-shrubs-planting'
+    | '/services/gutter-cleaning'
     | '/services/lawn-aeration'
     | '/services/lawn-mowing'
     | '/services/mulch-stone-installation'
     | '/services/seasonal-cleanups'
+    | '/services/shrub-bush-trimming'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/service-areas'
+    | '/services/brush-yard-waste-removal'
+    | '/services/flower-shrub-small-tree-planting'
+    | '/services/garden-bed-maintenance'
     | '/services/garden-beds-shrubs-planting'
+    | '/services/gutter-cleaning'
     | '/services/lawn-aeration'
     | '/services/lawn-mowing'
     | '/services/mulch-stone-installation'
     | '/services/seasonal-cleanups'
+    | '/services/shrub-bush-trimming'
   id:
     | '__root__'
     | '/'
+    | '/service-areas'
+    | '/services/brush-yard-waste-removal'
+    | '/services/flower-shrub-small-tree-planting'
+    | '/services/garden-bed-maintenance'
     | '/services/garden-beds-shrubs-planting'
+    | '/services/gutter-cleaning'
     | '/services/lawn-aeration'
     | '/services/lawn-mowing'
     | '/services/mulch-stone-installation'
     | '/services/seasonal-cleanups'
+    | '/services/shrub-bush-trimming'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ServiceAreasRoute: typeof ServiceAreasRoute
+  ServicesBrushYardWasteRemovalRoute: typeof ServicesBrushYardWasteRemovalRoute
+  ServicesFlowerShrubSmallTreePlantingRoute: typeof ServicesFlowerShrubSmallTreePlantingRoute
+  ServicesGardenBedMaintenanceRoute: typeof ServicesGardenBedMaintenanceRoute
   ServicesGardenBedsShrubsPlantingRoute: typeof ServicesGardenBedsShrubsPlantingRoute
+  ServicesGutterCleaningRoute: typeof ServicesGutterCleaningRoute
   ServicesLawnAerationRoute: typeof ServicesLawnAerationRoute
   ServicesLawnMowingRoute: typeof ServicesLawnMowingRoute
   ServicesMulchStoneInstallationRoute: typeof ServicesMulchStoneInstallationRoute
   ServicesSeasonalCleanupsRoute: typeof ServicesSeasonalCleanupsRoute
+  ServicesShrubBushTrimmingRoute: typeof ServicesShrubBushTrimmingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -120,11 +202,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/service-areas': {
+      id: '/service-areas'
+      path: '/service-areas'
+      fullPath: '/service-areas'
+      preLoaderRoute: typeof ServiceAreasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/brush-yard-waste-removal': {
+      id: '/services/brush-yard-waste-removal'
+      path: '/services/brush-yard-waste-removal'
+      fullPath: '/services/brush-yard-waste-removal'
+      preLoaderRoute: typeof ServicesBrushYardWasteRemovalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/flower-shrub-small-tree-planting': {
+      id: '/services/flower-shrub-small-tree-planting'
+      path: '/services/flower-shrub-small-tree-planting'
+      fullPath: '/services/flower-shrub-small-tree-planting'
+      preLoaderRoute: typeof ServicesFlowerShrubSmallTreePlantingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/garden-bed-maintenance': {
+      id: '/services/garden-bed-maintenance'
+      path: '/services/garden-bed-maintenance'
+      fullPath: '/services/garden-bed-maintenance'
+      preLoaderRoute: typeof ServicesGardenBedMaintenanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/garden-beds-shrubs-planting': {
       id: '/services/garden-beds-shrubs-planting'
       path: '/services/garden-beds-shrubs-planting'
       fullPath: '/services/garden-beds-shrubs-planting'
       preLoaderRoute: typeof ServicesGardenBedsShrubsPlantingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/gutter-cleaning': {
+      id: '/services/gutter-cleaning'
+      path: '/services/gutter-cleaning'
+      fullPath: '/services/gutter-cleaning'
+      preLoaderRoute: typeof ServicesGutterCleaningRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/lawn-aeration': {
@@ -155,16 +272,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSeasonalCleanupsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/shrub-bush-trimming': {
+      id: '/services/shrub-bush-trimming'
+      path: '/services/shrub-bush-trimming'
+      fullPath: '/services/shrub-bush-trimming'
+      preLoaderRoute: typeof ServicesShrubBushTrimmingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ServiceAreasRoute: ServiceAreasRoute,
+  ServicesBrushYardWasteRemovalRoute: ServicesBrushYardWasteRemovalRoute,
+  ServicesFlowerShrubSmallTreePlantingRoute:
+    ServicesFlowerShrubSmallTreePlantingRoute,
+  ServicesGardenBedMaintenanceRoute: ServicesGardenBedMaintenanceRoute,
   ServicesGardenBedsShrubsPlantingRoute: ServicesGardenBedsShrubsPlantingRoute,
+  ServicesGutterCleaningRoute: ServicesGutterCleaningRoute,
   ServicesLawnAerationRoute: ServicesLawnAerationRoute,
   ServicesLawnMowingRoute: ServicesLawnMowingRoute,
   ServicesMulchStoneInstallationRoute: ServicesMulchStoneInstallationRoute,
   ServicesSeasonalCleanupsRoute: ServicesSeasonalCleanupsRoute,
+  ServicesShrubBushTrimmingRoute: ServicesShrubBushTrimmingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

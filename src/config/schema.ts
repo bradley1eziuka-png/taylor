@@ -5,7 +5,18 @@
 // ───────────────────────────────────────────────────────────────────────────
 import { z } from "zod";
 
-export const SERVICE_KEYS = ["mowing", "mulch", "cleanups", "gardenBeds", "aeration"] as const;
+export const SERVICE_KEYS = [
+  "mowing",
+  "mulch",
+  "cleanups",
+  "aeration",
+  "bedMaintenance",
+  "trimming",
+  "brushRemoval",
+  "planting",
+  "gutterCleaning",
+  "gardenBeds",
+] as const;
 export type ServiceKey = (typeof SERVICE_KEYS)[number];
 
 export const IMAGE_KEYS = [
@@ -60,6 +71,11 @@ export const siteConfigSchema = z.object({
     // Only list areas the business confirmed. Empty = nothing is shown.
     serviceAreas: z.array(z.string()).default([]),
     hours: z.array(hoursRow).default([]),
+    // Client-supplied Google Business Profile rating. Shown as a trust link only;
+    // never emitted as review structured data. Confirm against the live profile.
+    googleReviews: z
+      .object({ rating: optionalText, count: z.number().int().default(0), url: optionalText })
+      .default({}),
     social: z
       .object({
         facebook: optionalText,

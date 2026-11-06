@@ -1,3 +1,4 @@
-# Mockup: not for indexing until Taylor LawnCare has a real domain.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://taylorlawncarewi.com/sitemap.xml
