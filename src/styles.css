@@ -196,3 +196,30 @@ html {
 @utility section-pad {
   padding-block: clamp(4rem, 7vw, 7rem);
 }
+
+
+/* Estimate form success confirmation: gentle fade-up, check scales in and draws,
+   text follows. Total ~700ms. Disabled for reduced-motion users. */
+@keyframes success-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes success-pop {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes success-draw {
+  to { stroke-dashoffset: 0; }
+}
+.success-card { animation: success-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.success-badge { animation: success-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+.success-check {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: success-draw 0.35s ease-out 0.35s forwards;
+}
+.success-text { animation: success-rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both; }
+@media (prefers-reduced-motion: reduce) {
+  .success-card, .success-badge, .success-text { animation: none; }
+  .success-check { animation: none; stroke-dashoffset: 0; }
+}

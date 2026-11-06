@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { CheckCircle2, Info, Phone } from "lucide-react";
+import { Info, Phone } from "lucide-react";
 
 import { FORM_IS_DEMO, submitEstimate } from "@/lib/form-submit";
 import { siteConfig } from "@/config";
@@ -129,32 +129,47 @@ export function EstimateFormCard({ id, className }: { id?: string; className?: s
           </button>
         </div>
       ) : status === "success" ? (
-        <div className="flex flex-col items-center rounded-2xl border border-border bg-secondary/50 px-6 py-10 text-center">
-          <span className="flex size-16 items-center justify-center rounded-full bg-accent/15 text-gold-deep">
-            <CheckCircle2 className="size-8" />
+        <div
+          role="status"
+          className="success-card flex flex-col items-center rounded-2xl border border-[#bfdcc9] bg-[#f2f9f4] px-6 py-8 text-center"
+        >
+          <span className="success-badge flex size-16 items-center justify-center rounded-full bg-[#2e7d4f] text-white shadow-[0_8px_20px_-8px_rgba(46,125,79,0.6)]">
+            <svg viewBox="0 0 24 24" className="size-8" fill="none" aria-hidden="true">
+              <path
+                className="success-check"
+                d="M5 12.5l4.5 4.5L19 7.5"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </span>
-          <h3 className="mt-5 font-display text-2xl font-semibold tracking-tight text-primary">
-            Thank You, We'll Be in Touch
-          </h3>
-          <p className="mt-3 max-w-sm text-[0.95rem] leading-relaxed text-muted-foreground">
-            Thanks! Your estimate request has been sent. We'll be in touch soon.
-          </p>
-          <p className="mt-6 text-sm text-muted-foreground">
-            Need to reach us sooner?{" "}
-            <a
-              href={BUSINESS_PHONE_TEL}
-              className="font-semibold text-primary hover:text-gold-deep"
+          <div className="success-text">
+            <h3 className="mt-5 font-display text-2xl font-semibold tracking-tight text-primary sm:text-[1.7rem]">
+              Your Request Is On Its Way!
+            </h3>
+            <p className="mx-auto mt-3 max-w-sm text-base leading-relaxed text-foreground/80">
+              Thanks for reaching out! We've received your estimate request and will be in touch
+              soon.
+            </p>
+            <p className="mt-5 text-sm text-muted-foreground">
+              Need to reach us sooner?{" "}
+              <a
+                href={BUSINESS_PHONE_TEL}
+                className="whitespace-nowrap font-semibold text-primary hover:text-[#2e7d4f]"
+              >
+                Call {BUSINESS_PHONE}
+              </a>
+            </p>
+            <button
+              type="button"
+              onClick={() => setStatus("idle")}
+              className="mt-5 text-sm font-semibold text-[#2e7d4f] underline-offset-4 hover:underline"
             >
-              Call {BUSINESS_PHONE}
-            </a>
-          </p>
-          <button
-            type="button"
-            onClick={() => setStatus("idle")}
-            className="mt-6 text-sm font-semibold text-gold-deep hover:underline"
-          >
-            Submit another request
-          </button>
+              Submit Another Request
+            </button>
+          </div>
         </div>
       ) : (
         <form onSubmit={onSubmit} noValidate className="relative space-y-3">
