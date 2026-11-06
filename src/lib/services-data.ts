@@ -490,7 +490,7 @@ export const ALL_SERVICES: OfferedService[] = [
     description:
       "Add color and structure to your property with new flowers, shrubs, and small trees.",
     image: IMAGES.servicePlanting,
-    alt: "A mulched landscape bed with young plants and daffodils along the side of a home",
+    alt: "A mulched landscape bed with pink and white hydrangeas, hostas, shrubs, and a small Japanese maple beside a lawn",
     pageKey: "gardenBeds",
   },
   {

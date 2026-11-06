@@ -65,7 +65,7 @@ export const DEFAULT_IMAGES = {
   serviceBedMaintenance: "/images/garden-bed-cleanup-featured.webp",
   serviceTrimming: "/images/shrub-bush-trimming-featured.webp",
   serviceBrush: "/images/brush-yard-waste-removal-featured.webp",
-  servicePlanting: "/images/garden-bed-deck-corner.webp",
+  servicePlanting: "/images/flower-shrub-small-tree-planting-featured.webp",
   serviceGutter: "/images/gutter-cleaning-featured.webp",
   galleryMowingA: "/images/lawn-mowing-stripes-field.webp",
   galleryMowingB: "/images/lawn-mowing-crosshatch-stripes.webp",

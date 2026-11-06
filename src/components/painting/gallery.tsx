@@ -55,8 +55,8 @@ export function Gallery() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Our Work"
-          title="Real Work. Real Properties."
-          description="Photos from Taylor LawnCare projects around Waukesha County, including fresh mowing stripes, mulched beds, and well-kept properties."
+          title="Recent Jobs Around Waukesha County"
+          description="A look at recent mowing stripes, fresh mulch, and cleaned-up beds from our customers' yards."
         />
 
         <div className="mt-14 columns-1 gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-6">
