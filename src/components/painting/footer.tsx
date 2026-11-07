@@ -166,7 +166,15 @@ export function Footer() {
             © {year} Taylor Lawn Care LLC. All rights reserved.
           </p>
           <p className="text-xs text-white/55">
-            Lawn Care &amp; Property Maintenance · Eagle, Wisconsin
+            Lawn Care &amp; Property Maintenance · Eagle, Wisconsin ·{" "}
+            <a
+              href="https://getarclo.com"
+              target="_blank"
+              rel="noopener"
+              className="underline underline-offset-2 transition-colors hover:text-white"
+            >
+              Website by Arclo
+            </a>
           </p>
         </div>
       </div>
