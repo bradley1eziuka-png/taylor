@@ -18,8 +18,8 @@ const GALLERY = [
     label: "Lawn Mowing",
   },
   {
-    src: IMAGES.galleryBedA,
-    alt: "A mulched garden bed filled with green plants and a stepping stone beside a deck",
+    src: "/images/garden-bed-cleanup-featured.webp",
+    alt: "A crew member raking leaves and debris out of a mulched garden bed beside trimmed shrubs",
     label: "Landscape Bed Maintenance",
   },
   {
