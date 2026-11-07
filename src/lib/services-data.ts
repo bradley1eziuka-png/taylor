@@ -125,7 +125,7 @@ const BASE_SERVICES = {
         a: "No. As long as we can access the lawn, we can take care of it while you go about your day.",
       },
     ],
-    heroImage: IMAGES.mowing,
+    heroImage: IMAGES.serviceMowing,
     heroAlt:
       "A freshly mowed lawn with bright green stripes beside a gravel shoulder and mature trees",
     seoTitle: "Lawn Mowing in Eagle, WI",
@@ -195,7 +195,7 @@ const BASE_SERVICES = {
         a: "Many homeowners refresh mulch in spring so beds look sharp for the season, but it can be done at other times too. Give us a call and we'll help you plan.",
       },
     ],
-    heroImage: IMAGES.mulch,
+    heroImage: IMAGES.serviceMulch,
     heroAlt: "A curved landscape bed with dark mulch and stone edging in front of a two-story home",
     seoTitle: "Mulch & Stone Installation, Eagle WI",
     seoDescription:
@@ -496,7 +496,7 @@ const BASE_SERVICES = {
         a: "Yes. It pairs well with lawn mowing, garden bed maintenance, and seasonal cleanups, so you can keep everything with one provider.",
       },
     ],
-    heroImage: IMAGES.galleryBedB,
+    heroImage: IMAGES.serviceTrimming,
     heroAlt: "A mulched landscape bed with young plants and daffodils along the side of a home",
     seoTitle: "Shrub & Bush Trimming in Eagle, WI",
     seoDescription:
@@ -642,7 +642,7 @@ const BASE_SERVICES = {
         a: "Yes. Tell us you'd like it included when you request your free estimate.",
       },
     ],
-    heroImage: IMAGES.cleanups,
+    heroImage: IMAGES.serviceGutter,
     heroAlt: "A yard covered in fallen leaves with long tree shadows across the lawn",
     seoTitle: "Gutter Cleaning in Eagle, WI",
     seoDescription:
